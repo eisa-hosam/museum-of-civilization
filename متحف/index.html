@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>متحف جوهرة الحضارة</title>
+    <!-- ربط ملف التنسيق الخارجي -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+<!-- شريط التنقل العلوي المربوط بأقسام متحفك الحالية -->
+<nav class="main-navbar">
+    <div class="nav-logo">جوهرة الحضارة</div>
+    <ul class="nav-links">
+        <li><a href="javascript:void(0)" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="active">الرئيسية</a></li>
+        <li><a href="javascript:void(0)" onclick="openAboutModal()">عن المتحف</a></li>
+        <li><a href="javascript:void(0)" onclick="document.getElementById('museum-gallery').scrollIntoView({behavior: 'smooth'})">المعروضات</a></li>
+        <li><a href="https://wa.me/201142403263" target="_blank" class="contact-btn">تواصل معي</a></li>
+    </ul>
+</nav>
+
+
+    <!-- رأس الصفحة والعنوان -->
+    <header>
+        <h1>متحف جوهرة الحضارة</h1>
+        <p>استكشف أقسام التاريخ والفن من مختلف حضارات العالم</p>
+    </header>
+
+    <div class="container">
+        <div id="museum-gallery"></div>
+        <!-- القسم الأول: الآثار المصرية -->
+        <div class="section-title">القسم الأول: جناح الآثار المصرية القديمة 🇪🇬</div>
+        <main class="museum-container" id="egypt-gallery"></main>
+
+        <!-- القسم الثاني: اللوحات الفنية العالمية -->
+        <div class="section-title">القسم الثاني: قاعة اللوحات الفنية العالمية 🎨</div>
+        <main class="museum-container" id="paintings-gallery"></main>
+
+        <!-- القسم الثالث: آثار من حول العالم -->
+        <div class="section-title">القسم الثالث: جناح الآثار والحضارات العالمية 🌍</div>
+        <main class="museum-container" id="world-gallery"></main>
+    </div>
+
+    <!-- النافذة المنبثقة للتفاصيل (Modal) -->
+    <div id="museumModal" class="modal" onclick="closeMuseum(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <button class="close-btn" onclick="closeMuseum()">&times;</button>
+            <img id="modalImg" class="modal-img" src="" alt="صورة الأثر">
+            <div class="modal-details">
+                <h2 id="modalTitle">اسم القطعة</h2>
+                <h4 id="modalArtist">المصدر</h4>
+                <p id="modalDesc">الشرح والتفاصيل...</p>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- زر التواصل العائم -->
+    <button class="suggest-btn" onclick="openSuggestModal()">💡 اقترح قطعة للمتحف</button>
+
+    <!-- نافذة الاقتراحات المنبثقة (Suggestion Modal) -->
+    <div id="suggestModal" class="modal" onclick="closeSuggestModal(event)">
+        <div class="modal-content suggest-box" onclick="event.stopPropagation()">
+            <button class="close-btn" onclick="closeSuggestModal()">&times;</button>
+            
+            <div class="suggest-form">
+                <h2>اقتراح قطعة أثرية جديدة 📜</h2>
+                <p>إذا كانت هناك قطعة تريد إضافتها ومعلومات عنها غير متوفرة في المتحف، شاركها معنا!</p>
+                
+                <label>اسمك الكريم:</label>
+                <input type="text" id="visitorName" placeholder="اكتب اسمك هنا...">
+                
+                <label>اسم القطعة الأثرية/اللوحة:</label>
+                <input type="text" id="artifactName" placeholder="مثال: تمثال الذهب، لوحة العشاء الأخير...">
+                
+                <label>المعلومات المتوفرة لديك عنها:</label>
+                <textarea id="artifactInfo" rows="4" placeholder="اكتب هنا كل التفاصيل والمعلومات التي تعرفها عن هذه القطعة..."></textarea>
+                
+                <button class="send-whatsapp-btn" onclick="sendToWhatsApp()">إرسال الاقتراح عبر الواتساب 🚀</button>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+<!-- قسم التوقيع السينمائي الكبير في منتصف الصفحة -->
+<div class="cinema-signature-wrapper">
+    <p class="sub-signature-text">صُمم بكل فخر بواسطة</p>
+    <h1 class="giant-proud-name">عيسى حسام</h1>
+</div>
+
+<!-- تذييل الصفحة وحقوق الملكية الفكرية -->
+    <footer>
+        <p>&copy; 2026 جميع الحقوق محفوظة لـ <span class="owner-name">Eisa</span> & <span class="owner-name">Mohamed</span></p>
+    </footer>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- النافذة المنبثقة (عن المتحف والمصمم) -->
+<div id="aboutModal" class="custom-modal">
+    <div class="modal-card">
+        <span class="close-modal-btn" onclick="closeAboutModal()">&times;</span>
+        
+        <div class="modal-info-section">
+            <h2>متحف جوهرة الحضارة</h2>
+            <p>متحف رقمي تفاعلي تم تأسيسه ليكون نافذة تضيء على روائع التاريخ والفنون الإنسانية. يضم المتحف أجنحة متكاملة تأخذ الزائر في رحلة عبر الزمن لاستكشاف عظمة الآثار المصرية القديمة، وأشهر اللوحات الفنية العالمية.</p>
+        </div>
+
+        <hr style="border: 0; border-top: 1px solid rgba(255,204,0,0.3); margin: 20px 0;">
+
+        <div class="modal-info-section">
+            <h2>عن مصمم الموقع</h2>
+            <p>تم تصميم وتطوير هذا الموقع بكل فخر بواسطة المصمم والمطور <strong>عيسى حسام</strong>. تم بناء الموقع باستخدام أحدث تقنيات الويب لتقديم تجربة مستخدم سينمائية فريدة.</p>
+        </div>
+        
+        <button class="modal-close-bottom-btn" onclick="closeAboutModal()">إغلاق</button>
+    </div>
+</div>
+
+<!-- كود الجافا سكريبت البسيط لتشغيل الفتح والإغلاق -->
+<script>
+function openAboutModal() {
+    document.getElementById("aboutModal").style.display = "flex";
+}
+function closeAboutModal() {
+    document.getElementById("aboutModal").style.display = "none";
+}
+// إغلاق النافذة إذا ضغط الزائر خارج المربع الأسود
+window.onclick = function(event) {
+    let modal = document.getElementById("aboutModal");
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
+
+
+<!-- زر فتح الدردشة -->
+<button class="chat-toggle-btn" onclick="toggleChat()">💬</button>
+
+<!-- نافذة الدردشة -->
+<div id="chatWindow" class="chat-window" style="display: none;">
+    <div class="chat-header">متحف جوهرة الحضارة</div>
+    <div id="chatBody" class="chat-body">
+        <p>مرحباً بك! أنا مساعدك الذكي، اسألني عن أي أثر في العالم.</p>
+    </div>
+    <div class="chat-footer">
+        <input type="text" id="userInput" placeholder="اكتب سؤالك هنا...">
+        <button onclick="sendMessage()">إرسال</button>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="tut-container">
+    <img src="download-removebg-preview.png" alt="Tutankhamun" class="tut-img">
+    
+    <div id="welcome-bubble">
+        <span id="welcome-text"></span>
+    </div>
+</div>
+
+    <!-- ربط ملف البرمجة الخارجي -->
+    <script src="script.js"></script>
+</body>
+</html>
