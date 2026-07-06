@@ -37,6 +37,46 @@ const egyptianData = [
     }
 ];
 
+
+
+// بيانات جناح رؤساء مصر
+// بيانات قسم رؤساء مصر
+const egyptianLeadersData = [
+    { 
+        title: "اللواء محمد نجيب", 
+        source: "أول رئيس لجمهورية مصر", 
+        desc: "أول رئيس لجمهورية مصر العربية بعد ثورة 23 يوليو 1952، عرف بتواضعه وقربه من الشعب المصري.", 
+        img: "data:image/jpeg;base64,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" 
+    },
+    { 
+        title: "الزعيم جمال عبد الناصر", 
+        source: "1954 - 1970", 
+        desc: "قائد ثورة يوليو، صاحب مشروع السد العالي، وأحد أبرز القادة الذين نادوا بالقومية العربية واستقلال القرار الوطني.", 
+        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_RdEshCCbDY9v4u4yaC1QJnPsHlS-6uuB2fwwMeHxBQ&s=10" 
+    },
+    { 
+        title: "الرئيس محمد أنور السادات", 
+        source: "1970 - 1981", 
+        desc: "بطل الحرب والسلام، قاد مصر في حرب أكتوبر 1973 المجيدة، وحصل على جائزة نوبل للسلام.", 
+        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQI5W4IrBzpS0FqVo5P8nlWzI2d-_gycZb4IsLrWMPpjA&s=10" 
+    },
+    { 
+        title: "الرئيس محمد حسني مبارك", 
+        source: "1981 - 2011", 
+        desc: "تولى حكم مصر لمدة ثلاثة عقود، وشهدت فترة حكمه العديد من التطورات في البنية التحتية والسياسة الخارجية.", 
+        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQv56VbtsEs-8dLm0-kDyYF_YZcS4nLvh0-00_fMPgs7w&s=10" 
+    },
+    { 
+        title: "الرئيس عبد الفتاح السيسي", 
+        source: "2014 - حتى الآن", 
+        desc: "قاد مصر في مرحلة إعادة البناء، وأطلق العديد من المشروعات القومية الكبرى مثل العاصمة الإدارية الجديدة وتطوير الطرق والمرافق.", 
+        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRaeb3o1n5uTi99f-SZgvTaMva6ygpHm-Q2hZO3m6nMow&s=10" 
+    }
+];
+
+
+
+
 // 2. بيانات جناح اللوحات الفنية العالمية
 const paintingsData = [
     { 
@@ -135,6 +175,11 @@ const worldData = [
     }
 ];
 
+
+
+
+createGallerySection('leaders-gallery', egyptianLeadersData);
+
 // دالة لتوليد الكروت بشكل تلقائي وعرضها داخل الأجنحة المخصصة في الـ HTML
 function createGallerySection(containerId, dataArray) {
     const container = document.getElementById(containerId);
@@ -231,45 +276,6 @@ function sendToWhatsApp() {
     window.open(whatsappUrl, '_blank');
 }
 
-// في ملف script.js
-const webAppUrl = "https://script.google.com/macros/s/AKfycbyvQJ96TciC2S-jcg0uUWQ0WQ73RfvrWeXP-4tkCUkxsXfz80EOp9KzDTGV-aHIlUxF/exec";;
-
-async function sendMessage() {
-    const input = document.getElementById('userInput');
-    const body = document.getElementById('chatBody');
-
-    if (input.value.trim() !== "") {
-        body.innerHTML += `<p><b>أنت:</b> ${input.value}</p>`;
-        
-        // إرسال السؤال للوسيط
-        try {
-            const response = await fetch(webAppUrl, {
-                method: "POST",
-                body: JSON.stringify({ message: input.value })
-            });
-            const data = await response.json();
-            
-            // عرض إجابة Gemini
-            const answer = data.candidates[0].content.parts[0].text;
-            body.innerHTML += `<p><b>المتحف:</b> ${answer}</p>`;
-        } catch (error) {
-            body.innerHTML += `<p style="color:red;">عذراً، حدث خطأ. تأكد من إعدادات الربط.</p>`;
-        }
-        
-        input.value = "";
-        body.scrollTop = body.scrollHeight; // لجعل الشاشة تنزل لأسفل مع الإجابة الجديدة
-    }
-}
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -289,3 +295,36 @@ function typeEffect() {
 }
 
 typeEffect();
+
+
+
+
+
+
+window.addEventListener('load', function() {
+    const loader = document.querySelector('.loader-container');
+    setTimeout(() => {
+        loader.style.transition = 'opacity 0.5s';
+        loader.style.opacity = '0';
+        setTimeout(() => {
+            loader.style.display = 'none';
+        }, 500);
+    }, 3000); // إخفاء بعد 3 ثوانٍ ليتمكن المستخدم من رؤية الرسم
+});
+
+
+
+
+
+window.addEventListener('load', function() {
+    const loader = document.querySelector('.loader-container');
+    setTimeout(() => {
+        loader.style.transition = 'opacity 0.5s';
+        loader.style.opacity = '0';
+        setTimeout(() => {
+            loader.style.display = 'none';
+        }, 500);
+    }, 5300); // ← الرقم القديم كان 3000، خليته 5300 عشان ياخد وقت كافي بعد ما الباب يفتح
+});
+
+
