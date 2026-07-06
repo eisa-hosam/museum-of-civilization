@@ -6,9 +6,28 @@
     <title>متحف جوهرة الحضارة</title>
     <!-- ربط ملف التنسيق الخارجي -->
     <link rel="stylesheet" href="style.css">
+
+    
+    <link rel="icon" type="image/png" href="LOGO-removebg-preview.png">
+    
+</head>
 </head>
 <body>
 
+
+
+
+
+<div class="loader-container">
+    <div class="drawing-box">
+        <svg viewBox="0 0 100 100">
+            <rect x="5" y="5" width="90" height="90" fill="none" stroke="#d4af37" stroke-width="2" class="border-draw" />
+        </svg>
+        <img src="LOGO-removebg-preview.png" alt="photo"  class="tut-icon" >
+         
+    </div>
+
+</div>
 
 <!-- شريط التنقل العلوي المربوط بأقسام متحفك الحالية -->
 <nav class="main-navbar">
@@ -20,6 +39,11 @@
         <li><a href="https://wa.me/201142403263" target="_blank" class="contact-btn">تواصل معي</a></li>
     </ul>
 </nav>
+
+
+
+
+
 
 
     <!-- رأس الصفحة والعنوان -->
@@ -34,13 +58,18 @@
         <div class="section-title">القسم الأول: جناح الآثار المصرية القديمة 🇪🇬</div>
         <main class="museum-container" id="egypt-gallery"></main>
 
+        <div class="section-title">القسم الثاني : رؤساء العصر الحديث 🏛️</div>
+        <main class="museum-container" id="leaders-gallery"></main>
+
         <!-- القسم الثاني: اللوحات الفنية العالمية -->
-        <div class="section-title">القسم الثاني: قاعة اللوحات الفنية العالمية 🎨</div>
+        <div class="section-title">القسم الثالث: قاعة اللوحات الفنية العالمية 🎨</div>
         <main class="museum-container" id="paintings-gallery"></main>
 
         <!-- القسم الثالث: آثار من حول العالم -->
-        <div class="section-title">القسم الثالث: جناح الآثار والحضارات العالمية 🌍</div>
+        <div class="section-title">القسم الرابع : جناح الآثار والحضارات العالمية 🌍</div>
         <main class="museum-container" id="world-gallery"></main>
+
+
     </div>
 
     <!-- النافذة المنبثقة للتفاصيل (Modal) -->
@@ -55,17 +84,6 @@
             </div>
         </div>
     </div>
-
-
-
-
-
-
-
-
-
-
-
 
 
 <!-- زر التواصل العائم -->
@@ -100,32 +118,8 @@
 
 
 
-<!-- قسم التوقيع السينمائي الكبير في منتصف الصفحة -->
-<div class="cinema-signature-wrapper">
-    <p class="sub-signature-text">صُمم بكل فخر بواسطة</p>
-    <h1 class="giant-proud-name">عيسى حسام</h1>
-</div>
 
-<!-- تذييل الصفحة وحقوق الملكية الفكرية -->
-    <footer>
-        <p>&copy; 2026 جميع الحقوق محفوظة لـ <span class="owner-name">Eisa</span> & <span class="owner-name">Mohamed</span></p>
-    </footer>
     
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!-- النافذة المنبثقة (عن المتحف والمصمم) -->
 <div id="aboutModal" class="custom-modal">
     <div class="modal-card">
@@ -165,30 +159,6 @@ window.onclick = function(event) {
 </script>
 
 
-<!-- زر فتح الدردشة -->
-<button class="chat-toggle-btn" onclick="toggleChat()">💬</button>
-
-<!-- نافذة الدردشة -->
-<div id="chatWindow" class="chat-window" style="display: none;">
-    <div class="chat-header">متحف جوهرة الحضارة</div>
-    <div id="chatBody" class="chat-body">
-        <p>مرحباً بك! أنا مساعدك الذكي، اسألني عن أي أثر في العالم.</p>
-    </div>
-    <div class="chat-footer">
-        <input type="text" id="userInput" placeholder="اكتب سؤالك هنا...">
-        <button onclick="sendMessage()">إرسال</button>
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -199,6 +169,32 @@ window.onclick = function(event) {
         <span id="welcome-text"></span>
     </div>
 </div>
+
+
+
+
+<!-- قسم الزيارة للمتحف المصري الإلكتروني -->
+<section class="visit-museum-section">
+    <div class="visit-content">
+        <h2>تعرف على المزيد من الآثار 🏛️</h2>
+        <p>اكتشف كنوز التاريخ المصري في رحلة رقمية لا تُنسى. يمكنك الآن زيارة "المتحف المصري الإلكتروني" والاطلاع على آلاف القطع الأثرية النادرة.</p>
+        <a href="https://egymonuments.gov.eg/" target="_blank" class="visit-btn">زيارة المتحف الإلكتروني 🚀</a>
+    </div>
+</section>
+
+
+
+<!-- قسم التوقيع السينمائي الكبير في منتصف الصفحة -->
+<div class="cinema-signature-wrapper">
+    <p class="sub-signature-text">صُمم بكل فخر بواسطة</p>
+    <h1 class="giant-proud-name">عيسى حسام</h1>
+</div>
+
+<!-- تذييل الصفحة وحقوق الملكية الفكرية -->
+    <footer>
+        <p>&copy; 2026 جميع الحقوق محفوظة لـ <span class="owner-name">Eisa</span> & <span class="owner-name">Mohamed</span></p>
+    </footer>
+
 
     <!-- ربط ملف البرمجة الخارجي -->
     <script src="script.js"></script>
