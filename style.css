@@ -694,7 +694,7 @@ body {
 }
 
 .tut-img {
-    width: 120px; /* تحكم في حجم الصورة هنا */
+    width: 320px; /* تحكم في حجم الصورة هنا */
     height: auto;
 }
 
@@ -861,4 +861,13 @@ body {
 
 
 
-
+.eisa-photo{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}
+.ph{
+    width: 150px;
+    height: 150px;
+    border-radius: 11%;
+}
