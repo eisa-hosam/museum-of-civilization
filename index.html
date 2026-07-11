@@ -44,6 +44,72 @@
 
 
 
+<!-- ============================================================
+ 
+=================================================================-->
+
+<div id="dyl-root">
+
+  <!-- الشريط الثابت اللي بيفضل ظاهر فوق بعد ما اليوزر ياخد نتيجته -->
+  <div class="dyl-topbar" id="dylTopbar">
+    <span class="dyl-topbar-text">
+      أنت تشبه <strong id="dylTopbarName"></strong>
+    </span>
+    <button class="dyl-topbar-retake" id="dylTopbarRetake">أعد الاختبار</button>
+    <button class="dyl-topbar-close" id="dylTopbarClose" aria-label="إغلاق">×</button>
+  </div>
+
+  <div class="dyl-overlay" id="dylOverlay">
+    <div class="dyl-frame" id="dylFrame">
+      <span class="dyl-corner tl"></span>
+      <span class="dyl-corner tr"></span>
+      <span class="dyl-corner bl"></span>
+      <span class="dyl-corner br"></span>
+      <button class="dyl-close" id="dylClose" aria-label="إغلاق">×</button>
+
+      <div id="dylStageWelcome">
+        <svg class="dyl-eye" viewBox="0 0 64 40" fill="none" stroke-width="1.5">
+          <path d="M2 20C14 4 50 4 62 20C50 36 14 36 2 20Z"/>
+          <circle cx="32" cy="20" r="8"/>
+          <circle cx="32" cy="20" r="2.5" fill="currentColor" style="color:var(--gold-400)"/>
+        </svg>
+        <p class="dyl-eyebrow">جوهرة الحضارة</p>
+        <h2 class="dyl-title">اكتشف أثرك</h2>
+        <p class="dyl-sub">
+          خمسة أسئلة تفصلك عن معرفة أي شخصية من مصر القديمة تشبه روحك.
+          هل أنت قائد، أم حكيم، أم مقاتل، أم صانع؟
+        </p>
+        <button class="dyl-btn" id="dylStart">ابدأ الرحلة</button>
+        <button class="dyl-skip" id="dylSkip">لا شكرًا، ادخل الموقع مباشرة</button>
+      </div>
+
+      <div id="dylStageQuiz" style="display:none;">
+        <div class="dyl-quiz-head">
+          <div class="dyl-progress-track"><div class="dyl-progress-fill" id="dylProgress"></div></div>
+          <span class="dyl-progress-label" id="dylProgressLabel">1 / 5</span>
+        </div>
+        <h3 class="dyl-question" id="dylQuestion"></h3>
+        <div class="dyl-options" id="dylOptions"></div>
+      </div>
+
+      <div id="dylStageResult" style="display:none;">
+        <span class="dyl-result-badge" id="dylResultBadge">أثرك هو</span>
+        <h2 class="dyl-result-name" id="dylResultName"></h2>
+        <p class="dyl-result-tag" id="dylResultTag"></p>
+        <p class="dyl-result-desc" id="dylResultDesc"></p>
+        <div class="dyl-result-actions">
+          <button class="dyl-btn" id="dylShare">شارك نتيجتك</button>
+          <button class="dyl-btn dyl-ghost" id="dylEnter">ادخل المتحف</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+
 
 
     <!-- رأس الصفحة والعنوان -->

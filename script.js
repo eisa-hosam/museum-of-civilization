@@ -327,24 +327,24 @@ function closeSuggestModal(event) {
     }
 }
 
-// دالة تجميع البيانات وإرسالها إلى الواتساب الخاص بك
+
 function sendToWhatsApp() {
-    // ضع رقم هاتفك هنا بدلاً من هذا الرقم (اكتبه بالصيغة الدولية بدون أصفار أو علامة +)
-    // مثال لرقـم مصري: 2010xxxxxxxx
+    
+    
     const myPhoneNumber = "+201142403263"; 
 
-    // جلب القيم التي كتبها المستخدم في الخانات
+    
     const visitorName = document.getElementById('visitorName').value.trim();
     const artifactName = document.getElementById('artifactName').value.trim();
     const artifactInfo = document.getElementById('artifactInfo').value.trim();
 
-    // التأكد من أن المستخدم ملأ الخانات الأساسية
+    
     if (visitorName === "" || artifactName === "" || artifactInfo === "") {
         alert("من فضلك املأ جميع الحقول أولاً قبل الإرسال! 😊");
         return;
     }
 
-    // تجهيز نص الرسالة المنظم لكي يصلك على الواتساب
+    
     const message = `مرحباً عيسى، لدي اقتراح لقطعة جديدة لمتحفك الرقمي:%0A%0A` +
                     `👤 *اسم الزائر:* ${visitorName}%0A` +
                     `📜 *اسم القطعة:* ${artifactName}%0A` +
@@ -404,7 +404,232 @@ window.addEventListener('load', function() {
         setTimeout(() => {
             loader.style.display = 'none';
         }, 500);
-    }, 5300); // ← الرقم القديم كان 3000، خليته 5300 عشان ياخد وقت كافي بعد ما الباب يفتح
+    }, 5300); 
 });
 
 
+
+
+
+
+
+// التشبيه
+(function(){
+  var STORAGE_KEY = "dyl_seen_v1";
+  var RESULT_KEY = "dyl_result_v1";
+
+  var questions = [
+    {
+      q:"ماذا تفضل؟",
+      options:[
+        {label:"القيادة", icon:"👑", trait:"leader"},
+        {label:"التعلم", icon:"📚", trait:"sage"},
+        {label:"المغامرة", icon:"⚔️", trait:"warrior"},
+        {label:"الإبداع", icon:"🎨", trait:"builder"}
+      ]
+    },
+    {
+      q:"لو كنت في مصر القديمة، ماذا سيكون دورك؟",
+      options:[
+        {label:"فرعون", icon:"👑", trait:"leader"},
+        {label:"كاتب", icon:"📚", trait:"sage"},
+        {label:"قائد جيش", icon:"⚔️", trait:"warrior"},
+        {label:"مهندس", icon:"🎨", trait:"builder"}
+      ]
+    },
+    {
+      q:"ما الصفة الأقرب لك؟",
+      options:[
+        {label:"الشجاعة", icon:"⚔️", trait:"warrior"},
+        {label:"الحكمة", icon:"📚", trait:"sage"},
+        {label:"الصبر", icon:"🎨", trait:"builder"},
+        {label:"الذكاء", icon:"👑", trait:"leader"}
+      ]
+    },
+    {
+      q:"ما لونك المفضل؟",
+      options:[
+        {label:"الذهبي", icon:"👑", trait:"leader"},
+        {label:"الأزرق", icon:"📚", trait:"sage"},
+        {label:"الأحمر", icon:"⚔️", trait:"warrior"},
+        {label:"الأخضر", icon:"🎨", trait:"builder"}
+      ]
+    },
+    {
+      q:"ماذا تحب أن تترك وراءك؟",
+      options:[
+        {label:"إنجازات عظيمة", icon:"👑", trait:"leader"},
+        {label:"معرفة", icon:"📚", trait:"sage"},
+        {label:"انتصارات", icon:"⚔️", trait:"warrior"},
+        {label:"مبانٍ وآثار", icon:"🎨", trait:"builder"}
+      ]
+    }
+  ];
+
+  var results = {
+    leader:{
+      name:"رمسيس الثاني",
+      tag:"الملك العظيم",
+      desc:"روحك روح قائد. تحب أن تصنع القرار وتحمل المسؤولية، وتترك أثرًا يتحدث عنه التاريخ من بعدك، تمامًا كما فعل رمسيس الثاني الذي حكم لأكثر من ستين عامًا وترك أعظم المعابد والتماثيل."
+    },
+    sage:{
+      name:"إمحوتب",
+      tag:"الحكيم والمهندس",
+      desc:"روحك روح باحث عن المعرفة. تفكر قبل أن تتصرف، وتؤمن أن العلم أقوى سلاح. إمحوتب لم يكن مجرد وزير، بل طبيب ومهندس وحكيم قُدّس اسمه بعد رحيله."
+    },
+    warrior:{
+      name:"أحمس الأول",
+      tag:"محرر الأرض",
+      desc:"روحك روح مقاتل لا يعرف الاستسلام. تواجه الصعاب بشجاعة وتدافع عمّا تؤمن به، مثل أحمس الأول الذي طرد الهكسوس ووحّد مصر من جديد."
+    },
+    builder:{
+      name:"سننموت",
+      tag:"صانع الخلود",
+      desc:"روحك روح مبدع يبني ولا يهدم. تُترجم أفكارك إلى شيء ملموس يبقى بعدك، مثل سننموت مهندس معبد الدير البحري الذي لا يزال قائمًا حتى اليوم."
+    }
+  };
+
+  var current = 0;
+  var scores = {leader:0, sage:0, warrior:0, builder:0};
+
+  var overlay = document.getElementById('dylOverlay');
+  var stageWelcome = document.getElementById('dylStageWelcome');
+  var stageQuiz = document.getElementById('dylStageQuiz');
+  var stageResult = document.getElementById('dylStageResult');
+  var topbar = document.getElementById('dylTopbar');
+  var topbarName = document.getElementById('dylTopbarName');
+
+  function alreadySeen(){
+    try{ return sessionStorage.getItem(STORAGE_KEY) === "1"; }
+    catch(e){ return false; }
+  }
+  function markSeen(){
+    try{ sessionStorage.setItem(STORAGE_KEY, "1"); }catch(e){}
+  }
+  function saveResult(name){
+    try{ sessionStorage.setItem(RESULT_KEY, name); }catch(e){}
+  }
+  function loadResult(){
+    try{ return sessionStorage.getItem(RESULT_KEY); }catch(e){ return null; }
+  }
+
+  function openModal(){
+    overlay.classList.add('dyl-show');
+  }
+  function closeModal(){
+    overlay.classList.remove('dyl-show');
+    markSeen();
+  }
+
+  function showTopbar(name){
+    topbarName.textContent = name;
+    topbar.classList.add('dyl-topbar-show');
+  }
+  function hideTopbar(){
+    topbar.classList.remove('dyl-topbar-show');
+  }
+
+  function showStage(el){
+    [stageWelcome, stageQuiz, stageResult].forEach(function(s){ s.style.display = 'none'; });
+    el.style.display = 'block';
+  }
+
+  function renderQuestion(){
+    var item = questions[current];
+    document.getElementById('dylQuestion').textContent = item.q;
+    document.getElementById('dylProgressLabel').textContent = (current+1) + " / " + questions.length;
+    document.getElementById('dylProgress').style.width = (((current+1)/questions.length)*100) + "%";
+
+    var wrap = document.getElementById('dylOptions');
+    wrap.innerHTML = "";
+    item.options.forEach(function(opt){
+      var btn = document.createElement('button');
+      btn.className = 'dyl-option';
+      btn.innerHTML = '<span class="dyl-icon">'+opt.icon+'</span><span>'+opt.label+'</span>';
+      btn.addEventListener('click', function(){
+        scores[opt.trait]++;
+        current++;
+        if(current < questions.length){
+          renderQuestion();
+        } else {
+          renderResult();
+        }
+      });
+      wrap.appendChild(btn);
+    });
+  }
+
+  function topTrait(){
+    var best = 'leader', max = -1;
+    Object.keys(scores).forEach(function(k){
+      if(scores[k] > max){ max = scores[k]; best = k; }
+    });
+    return best;
+  }
+
+  function renderResult(){
+    var trait = topTrait();
+    var r = results[trait];
+    document.getElementById('dylResultName').textContent = r.name;
+    document.getElementById('dylResultTag').textContent = r.tag;
+    document.getElementById('dylResultDesc').textContent = r.desc;
+    showStage(stageResult);
+    saveResult(r.name);
+  }
+
+  document.getElementById('dylStart').addEventListener('click', function(){
+    current = 0;
+    scores = {leader:0, sage:0, warrior:0, builder:0};
+    showStage(stageQuiz);
+    renderQuestion();
+  });
+
+  document.getElementById('dylSkip').addEventListener('click', closeModal);
+  document.getElementById('dylClose').addEventListener('click', closeModal);
+
+  document.getElementById('dylEnter').addEventListener('click', function(){
+    closeModal();
+    var name = document.getElementById('dylResultName').textContent;
+    showTopbar(name);
+  });
+
+  document.getElementById('dylShare').addEventListener('click', function(){
+    var name = document.getElementById('dylResultName').textContent;
+    var text = "اكتشفت أن أثري هو " + name + " في متحف جوهرة الحضارة، اكتشف أثرك أنت كمان:";
+    if(navigator.share){
+      navigator.share({ title:"اكتشف أثرك", text:text, url:location.href }).catch(function(){});
+    } else {
+      navigator.clipboard.writeText(text + " " + location.href).then(function(){
+        var btn = document.getElementById('dylShare');
+        var original = btn.textContent;
+        btn.textContent = "تم نسخ الرابط";
+        setTimeout(function(){ btn.textContent = original; }, 2000);
+      });
+    }
+  });
+
+  document.getElementById('dylTopbarClose').addEventListener('click', hideTopbar);
+
+  document.getElementById('dylTopbarRetake').addEventListener('click', function(){
+    hideTopbar();
+    current = 0;
+    scores = {leader:0, sage:0, warrior:0, builder:0};
+    showStage(stageWelcome);
+    openModal();
+  });
+
+  overlay.addEventListener('click', function(e){
+    if(e.target === overlay) closeModal();
+  });
+
+  var savedResult = loadResult();
+  if(savedResult){
+    showTopbar(savedResult);
+  }
+
+  if(!alreadySeen()){
+    window.addEventListener('load', function(){
+      setTimeout(openModal, 400);
+    });
+  }
+})();
