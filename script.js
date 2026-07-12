@@ -633,3 +633,12 @@ window.addEventListener('load', function() {
     });
   }
 })();
+
+
+
+
+// إضافة حدث عند الضغط على زر صانع المتحف
+document.querySelector('.nav-builder-btn').addEventListener('click', function(e) {
+    console.log("جاري التوجه إلى بورتفوليو صانع المتحف...");
+    // يمكنك هنا إضافة أي كود إضافي قبل الانتقال إذا أردت
+});

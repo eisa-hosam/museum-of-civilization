@@ -862,13 +862,13 @@ body {
 
 
 .eisa-photo{
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
 }
 .ph{
-    width: 150px;
-    height: 150px;
+    width: 120px;
+    height: 120px;
     border-radius: 11%;
 }
 
@@ -1084,4 +1084,24 @@ body {
   .dyl-result-actions{ flex-direction:column; }
   .dyl-result-actions .dyl-btn{ width:100%; }
   .dyl-topbar{ flex-wrap:wrap; text-align:center; }
+}
+
+
+
+
+
+
+/* تنسيق زر صانع المتحف في النافبار */
+.nav-links li a.nav-builder-btn {
+    background-color: #d4af37; /* اللون الذهبي الخاص بموقعك */
+    color: #000 !important;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.nav-links li a.nav-builder-btn:hover {
+    background-color: #f1c40f;
+    transform: scale(1.05);
 }
