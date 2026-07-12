@@ -1154,51 +1154,39 @@ body {
 
 
 
-.visit-museum-section {
-    padding: 80px 20px;
-    display: flex;
-    justify-content: center;
-}
-
-.visit-card {
-    background: linear-gradient(145deg, #1e1e1e, #0f0f0f);
-    padding: 40px;
-    border-radius: 25px;
+.hero-box {
+    backdrop-filter: blur(10px);    /* تأثير الضبابية */
+    border: 1px solid rgba(212, 175, 55, 0.5); /* الحدود الذهبية */
+    border-radius: 20px;
+    padding: 30px;
     text-align: center;
-    border: 1px solid #d4af37;
-    max-width: 500px;
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    max-width: 700px;
+    margin: 0 auto;
 }
 
-.visit-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
-}
-
-.visit-icon {
-    font-size: 50px;
-    margin-bottom: 20px;
-}
-
-.visit-btn {
+/* تنسيق الزر ليكون متطابقاً مع التصميم العام */
+.main-btn {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
-    margin-top: 25px;
+    justify-content: center;
+    gap: 8px;
     padding: 12px 30px;
-    background: #d4af37;
-    color: #000;
+    background: #d4af37; /* اللون الذهبي المميز لهويتك */
+    color: #000;         /* النص باللون الأسود للتباين */
     text-decoration: none;
     font-weight: bold;
-    border-radius: 50px;
-    transition: 0.3s;
+    border-radius: 50px; /* زوايا دائرية */
+    border: none;
+    transition: all 0.3s ease; /* نعومة في الحركة */
+    cursor: pointer;
 }
 
-.visit-btn:hover {
-    background: #fff;
-    transform: scale(1.05);
+/* تأثير عند مرور الماوس (Hover Effect) */
+.main-btn:hover {
+    background: #fff;    /* يتحول للون الأبيض عند الماوس */
+    transform: scale(1.05); /* تكبير بسيط جداً للزر */
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.5); /* توهج ذهبي خفيف */
 }
-
 
 
 
