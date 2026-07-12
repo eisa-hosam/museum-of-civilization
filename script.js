@@ -258,8 +258,6 @@ const worldData = [
 
 
 
-createGallerySection('leaders-gallery', egyptianLeadersData);
-
 // دالة لتوليد الكروت بشكل تلقائي وعرضها داخل الأجنحة المخصصة في الـ HTML
 function createGallerySection(containerId, dataArray) {
     const container = document.getElementById(containerId);
@@ -282,12 +280,206 @@ function createGallerySection(containerId, dataArray) {
     container.innerHTML = htmlContent;
 }
 
-// تشغيل جلب وعرض البيانات المنفصلة فور تحميل الصفحة مباشرة
-window.onload = function() {
-    createGallerySection('egypt-gallery', egyptianData);
-    createGallerySection('paintings-gallery', paintingsData);
-    createGallerySection('world-gallery', worldData);
+// ============================================================
+// منطق شاشة اختيار الأجنحة: شاشة دخول -> شبكة أقسام -> عرض الجناح
+// ============================================================
+
+// كل جناح ومصفوفة بياناته وعنوانه
+const wingsMap = {
+    egypt:     { title: "القسم الأول: جناح الآثار المصرية القديمة 🇪🇬", data: egyptianData },
+    leaders:   { title: "القسم الثاني: رؤساء العصر الحديث 🏛️",         data: egyptianLeadersData },
+    paintings: { title: "القسم الثالث: قاعة اللوحات الفنية العالمية 🎨", data: paintingsData },
+    world:     { title: "القسم الرابع: جناح الآثار والحضارات العالمية 🌍", data: worldData }
 };
+
+function initWingsUI() {
+    const wingsIntro   = document.getElementById('wingsIntro');
+    const wingsGrid     = document.getElementById('wingsGrid');
+    const wingOpenView  = document.getElementById('wingOpenView');
+    const wingOpenTitle = document.getElementById('wingOpenTitle');
+    const wingBackBtn   = document.getElementById('wingBackBtn');
+    const wingsStartBtn = document.getElementById('wingsStartBtn');
+
+    // الضغط على "ابدأ تصفح المتحف": يخفي شاشة الدخول ويظهر شبكة الأقسام الأربعة
+    wingsStartBtn.addEventListener('click', openWingsSection);
+
+    // الضغط على أي كارت قسم: يفتح الجناح ويعرض قطعه الحقيقية
+    document.querySelectorAll('.wing-card').forEach(function (card) {
+        card.addEventListener('click', function () {
+            const key = card.getAttribute('data-wing');
+            const wing = wingsMap[key];
+            if (!wing) return;
+
+            wingOpenTitle.textContent = wing.title;
+            createGallerySection('wing-gallery', wing.data);
+            document.getElementById('wing-gallery').classList.toggle('leaders-wing', key === 'leaders');
+
+            wingsGrid.classList.remove('show');
+            wingOpenView.classList.add('show');
+            wingOpenView.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+    });
+
+    // زر العودة للأقسام: يخفي عرض الجناح ويرجّع شبكة الأقسام الأربعة
+    wingBackBtn.addEventListener('click', function () {
+        wingOpenView.classList.remove('show');
+        openWingsSection();
+    });
+}
+
+// تفتح شبكة الأقسام الأربعة مباشرة (تستخدمها زر البداية ورابط "المعروضات" في الناف بار)
+function openWingsSection() {
+    const wingsIntro = document.getElementById('wingsIntro');
+    const wingsGrid   = document.getElementById('wingsGrid');
+
+    wingsIntro.style.display = 'none';
+    wingsGrid.classList.add('show');
+    wingsGrid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+// تشغيل واجهة الأجنحة فور تحميل الصفحة
+window.onload = function () {
+    initWingsUI();
+    initAccessibilityWidget();
+};
+
+// ============================================================
+// قائمة إمكانية الوصول لخدمة زوار ذوي الهمم
+// ============================================================
+function initAccessibilityWidget() {
+    const toggleBtn   = document.getElementById('a11yToggleBtn');
+    const panel       = document.getElementById('a11yPanel');
+    const closeBtn    = document.getElementById('a11yCloseBtn');
+    const fontUpBtn   = document.getElementById('a11yFontUp');
+    const fontDownBtn = document.getElementById('a11yFontDown');
+    const fontResetBtn = document.getElementById('a11yFontReset');
+    const contrastBtn = document.getElementById('a11yContrastBtn');
+    const motionBtn   = document.getElementById('a11yMotionBtn');
+    const readingBtn  = document.getElementById('a11yReadingBtn');
+    const resetAllBtn = document.getElementById('a11yResetAllBtn');
+
+    const STORAGE_KEY = 'a11y_prefs_v1';
+    const FONT_STEPS = [1, 1.1, 1.2, 1.3]; // مستويات تكبير الخط المتاحة
+
+    let prefs = loadPrefs();
+    applyPrefs();
+
+    function loadPrefs() {
+        try {
+            const saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
+            if (saved) return saved;
+        } catch (e) { /* تجاهل أي خطأ في القراءة */ }
+        return { fontStep: 0, contrast: false, noMotion: false, reading: false };
+    }
+
+    function savePrefs() {
+        try {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(prefs));
+        } catch (e) { /* تجاهل أي خطأ في التخزين */ }
+    }
+
+    function applyPrefs() {
+        document.body.style.zoom = FONT_STEPS[prefs.fontStep] || 1;
+        document.body.classList.toggle('a11y-contrast', prefs.contrast);
+        document.body.classList.toggle('a11y-no-motion', prefs.noMotion);
+        document.body.classList.toggle('a11y-reading', prefs.reading);
+        contrastBtn.classList.toggle('active', prefs.contrast);
+        motionBtn.classList.toggle('active', prefs.noMotion);
+        readingBtn.classList.toggle('active', prefs.reading);
+    }
+
+    // فتح وإغلاق اللوحة
+    toggleBtn.addEventListener('click', function () {
+        panel.classList.toggle('show');
+    });
+    closeBtn.addEventListener('click', function () {
+        panel.classList.remove('show');
+    });
+    document.addEventListener('click', function (e) {
+        if (panel.classList.contains('show') &&
+            !panel.contains(e.target) &&
+            e.target !== toggleBtn) {
+            panel.classList.remove('show');
+        }
+    });
+
+    // التحكم في حجم الخط
+    fontUpBtn.addEventListener('click', function () {
+        prefs.fontStep = Math.min(prefs.fontStep + 1, FONT_STEPS.length - 1);
+        applyPrefs(); savePrefs();
+    });
+    fontDownBtn.addEventListener('click', function () {
+        prefs.fontStep = Math.max(prefs.fontStep - 1, 0);
+        applyPrefs(); savePrefs();
+    });
+    fontResetBtn.addEventListener('click', function () {
+        prefs.fontStep = 0;
+        applyPrefs(); savePrefs();
+    });
+
+    // التباين العالي
+    contrastBtn.addEventListener('click', function () {
+        prefs.contrast = !prefs.contrast;
+        applyPrefs(); savePrefs();
+    });
+
+    // إيقاف الحركة والأنيميشن
+    motionBtn.addEventListener('click', function () {
+        prefs.noMotion = !prefs.noMotion;
+        applyPrefs(); savePrefs();
+    });
+
+    // خط أوضح للقراءة
+    readingBtn.addEventListener('click', function () {
+        prefs.reading = !prefs.reading;
+        applyPrefs(); savePrefs();
+    });
+
+    // إعادة كل الإعدادات
+    resetAllBtn.addEventListener('click', function () {
+        prefs = { fontStep: 0, contrast: false, noMotion: false, reading: false };
+        applyPrefs(); savePrefs();
+    });
+}
+
+// ============================================================
+// الاستماع لوصف القطعة بصوت عالٍ (Text to Speech) داخل نافذة التفاصيل
+// ============================================================
+function toggleReadAloud() {
+    const btn = document.getElementById('listenBtn');
+    if (!('speechSynthesis' in window)) {
+        alert("للأسف متصفحك لا يدعم خاصية القراءة الصوتية.");
+        return;
+    }
+
+    // لو في قراءة شغالة بالفعل، وقفها
+    if (window.speechSynthesis.speaking) {
+        window.speechSynthesis.cancel();
+        btn.classList.remove('speaking');
+        btn.textContent = '🔊 استمع للوصف';
+        return;
+    }
+
+    const title = document.getElementById('modalTitle').innerText;
+    const source = document.getElementById('modalArtist').innerText;
+    const desc = document.getElementById('modalDesc').innerText;
+    const fullText = `${title}. ${source}. ${desc}`;
+
+    const utterance = new SpeechSynthesisUtterance(fullText);
+    utterance.lang = 'ar-SA';
+    utterance.rate = 0.95;
+
+    utterance.onstart = function () {
+        btn.classList.add('speaking');
+        btn.textContent = '⏸ إيقاف الاستماع';
+    };
+    utterance.onend = function () {
+        btn.classList.remove('speaking');
+        btn.textContent = '🔊 استمع للوصف';
+    };
+
+    window.speechSynthesis.speak(utterance);
+}
 
 // دوال التحكم بالنافذة المنبثقة التفاعلية وعرض البيانات
 function openMuseum(title, source, description, imgSrc) {
@@ -303,6 +495,14 @@ function openMuseum(title, source, description, imgSrc) {
 function closeMuseum() {
     document.getElementById('museumModal').style.display = 'none';
     document.body.style.overflow = 'auto'; // إعادة تفعيل التمرير الطبيعي للموقع
+    if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+    }
+    const listenBtn = document.getElementById('listenBtn');
+    if (listenBtn) {
+        listenBtn.classList.remove('speaking');
+        listenBtn.textContent = '🔊 استمع للوصف';
+    }
 }
 
 
@@ -355,26 +555,6 @@ function sendToWhatsApp() {
     
     window.open(whatsappUrl, '_blank');
 }
-
-
-
-
-const textElement = document.getElementById('welcome-text');
-const message = "مرحباً بك في متحف جوهرة الحضارة";
-let i = 0;
-let isDeleting = false;
-
-function typeEffect() {
-    textElement.textContent = message.substring(0, i);
-    
-    if (!isDeleting && i < message.length) i++;
-    else if (isDeleting && i > 0) i--;
-    else isDeleting = !isDeleting;
-
-    setTimeout(typeEffect, isDeleting ? 50 : 150);
-}
-
-typeEffect();
 
 
 
@@ -640,5 +820,5 @@ window.addEventListener('load', function() {
 // إضافة حدث عند الضغط على زر صانع المتحف
 document.querySelector('.nav-builder-btn').addEventListener('click', function(e) {
     console.log("جاري التوجه إلى بورتفوليو صانع المتحف...");
-    // يمكنك هنا إضافة أي كود إضافي قبل الانتقال إذا أردت
+
 });

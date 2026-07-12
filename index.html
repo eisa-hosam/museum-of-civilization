@@ -11,7 +11,6 @@
     <link rel="icon" type="image/png" href="LOGO-removebg-preview.png">
     
 </head>
-</head>
 <body>
 
 
@@ -34,7 +33,7 @@
     <div class="nav-logo">جوهرة الحضارة</div>
     <ul class="nav-links">
         <li><a href="javascript:void(0)" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="active">الرئيسية</a></li>
-        <li><a href="javascript:void(0)" onclick="document.getElementById('museum-gallery').scrollIntoView({behavior: 'smooth'})">المعروضات</a></li>
+        <li><a href="javascript:void(0)" onclick="openWingsSection()">المعروضات</a></li>
         <li><a href="javascript:void(0)" onclick="openAboutModal()">عن المتحف</a></li>
         <li><a href="https://eisa-hosam.github.io/Portfolio/" target="_blank" class="nav-builder-btn">صانع المتحف</a></li>
         <li><a href="https://wa.me/201142403263" target="_blank" class="contact-btn">تواصل معي</a></li>
@@ -119,39 +118,136 @@
         <p>استكشف أقسام التاريخ والفن من مختلف حضارات العالم</p>
     </header>
 
-    <div class="container">
-        <div id="museum-gallery"></div>
-        <!-- القسم الأول: الآثار المصرية -->
-        <div class="section-title">القسم الأول: جناح الآثار المصرية القديمة 🇪🇬</div>
-        <main class="museum-container" id="egypt-gallery"></main>
+    <div class="container" id="museum-gallery">
 
-        <div class="section-title">القسم الثاني : رؤساء العصر الحديث 🏛️</div>
-        <main class="museum-container" id="leaders-gallery"></main>
+        <!-- شاشة الدخول: تظهر أول ما اليوزر يوصل لقسم المعروضات -->
+        <div class="wings-intro" id="wingsIntro">
+            <span class="wings-intro-icon">𓂀</span>
+            <h2 class="wings-intro-title">اختر جناحك وابدأ رحلتك</h2>
+            <p class="wings-intro-text">
+                يضم متحف جوهرة الحضارة أربعة أجنحة رئيسية، كل جناح يحمل بين طياته
+                كنوزاً من عصر وحضارة مختلفة. اضغط الزر وابدأ الاستكشاف.
+            </p>
+            <button class="wings-start-btn" id="wingsStartBtn">ابدأ تصفح المتحف 🏛️</button>
+        </div>
 
-        <!-- القسم الثاني: اللوحات الفنية العالمية -->
-        <div class="section-title">القسم الثالث: قاعة اللوحات الفنية العالمية 🎨</div>
-        <main class="museum-container" id="paintings-gallery"></main>
+        <!-- شبكة الأقسام الأربعة: بتظهر بعد الضغط على زر البداية -->
+        <div class="wings-grid" id="wingsGrid">
 
-        <!-- القسم الثالث: آثار من حول العالم -->
-        <div class="section-title">القسم الرابع : جناح الآثار والحضارات العالمية 🌍</div>
-        <main class="museum-container" id="world-gallery"></main>
+            <div class="wing-card" data-wing="egypt">
+                <div class="wing-card-img">
+                    <img src="https://i.pinimg.com/1200x/33/dd/d0/33ddd0e3c8a03cf49b24ab256ed4b805.jpg" alt="جناح الآثار المصرية القديمة">
+                </div>
+                <div class="wing-card-body">
+                    <h3>جناح الآثار المصرية القديمة <span>🇪🇬</span></h3>
+                    <p>15 قطعة أثرية خالدة تحكي قصة عظمة الحضارة الفرعونية.</p>
+                    <span class="wing-open-btn">ادخل الجناح ⟵</span>
+                </div>
+            </div>
 
+            <div class="wing-card" data-wing="leaders">
+                <div class="wing-card-img">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_RdEshCCbDY9v4u4yaC1QJnPsHlS-6uuB2fwwMeHxBQ&s=10" alt="جناح رؤساء العصر الحديث">
+                </div>
+                <div class="wing-card-body">
+                    <h3>رؤساء العصر الحديث <span>🏛️</span></h3>
+                    <p>محطات في تاريخ مصر الحديث من خلال قادتها الخمسة.</p>
+                    <span class="wing-open-btn">ادخل الجناح ⟵</span>
+                </div>
+            </div>
+
+            <div class="wing-card" data-wing="paintings">
+                <div class="wing-card-img">
+                    <img src="https://i.pinimg.com/1200x/62/f8/e5/62f8e5fca7ac1915616148f475ea503c.jpg" alt="قاعة اللوحات الفنية العالمية">
+                </div>
+                <div class="wing-card-body">
+                    <h3>قاعة اللوحات الفنية العالمية <span>🎨</span></h3>
+                    <p>روائع الفن التشكيلي العالمي عبر العصور المختلفة.</p>
+                    <span class="wing-open-btn">ادخل الجناح ⟵</span>
+                </div>
+            </div>
+
+            <div class="wing-card" data-wing="world">
+                <div class="wing-card-img">
+                    <img src="https://images.unsplash.com/photo-1552832230-c0197dd311b5?q=80&w=600" alt="جناح الآثار والحضارات العالمية">
+                </div>
+                <div class="wing-card-body">
+                    <h3>الآثار والحضارات العالمية <span>🌍</span></h3>
+                    <p>رحلة حول العالم بين أبرز آثار وحضارات الأمم القديمة.</p>
+                    <span class="wing-open-btn">ادخل الجناح ⟵</span>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- عرض الجناح بعد فتحه: بيتحط فيه المعروضات الحقيقية بتاعت القسم -->
+        <div class="wing-open-view" id="wingOpenView">
+            <button class="wing-back-btn" id="wingBackBtn">⟶ العودة للأقسام</button>
+            <div class="section-title" id="wingOpenTitle"></div>
+            <main class="museum-container" id="wing-gallery"></main>
+        </div>
 
     </div>
 
     <!-- النافذة المنبثقة للتفاصيل (Modal) -->
     <div id="museumModal" class="modal" onclick="closeMuseum(event)">
         <div class="modal-content" onclick="event.stopPropagation()">
-            <button class="close-btn" onclick="closeMuseum()">&times;</button>
+            <button class="close-btn" onclick="closeMuseum()" aria-label="إغلاق نافذة التفاصيل">&times;</button>
             <img id="modalImg" class="modal-img" src="" alt="صورة الأثر">
             <div class="modal-details">
                 <h2 id="modalTitle">اسم القطعة</h2>
                 <h4 id="modalArtist">المصدر</h4>
                 <p id="modalDesc">الشرح والتفاصيل...</p>
+                <button class="listen-btn" id="listenBtn" onclick="toggleReadAloud()" aria-label="استماع لوصف القطعة">
+                    🔊 استمع للوصف
+                </button>
             </div>
         </div>
     </div>
 
+
+<!-- زر إمكانية الوصول العائم لخدمة زوار ذوي الهمم -->
+    <button class="a11y-toggle-btn" id="a11yToggleBtn" aria-label="فتح قائمة إمكانية الوصول">♿</button>
+
+    <div class="a11y-panel" id="a11yPanel">
+        <div class="a11y-panel-head">
+            <h3>إمكانية الوصول</h3>
+            <button class="a11y-close-btn" id="a11yCloseBtn" aria-label="إغلاق">&times;</button>
+        </div>
+
+        <div class="a11y-group">
+            <span class="a11y-group-label">حجم الخط</span>
+            <div class="a11y-btn-row">
+                <button id="a11yFontDown" aria-label="تصغير الخط">A-</button>
+                <button id="a11yFontReset" aria-label="حجم الخط الافتراضي">A</button>
+                <button id="a11yFontUp" aria-label="تكبير الخط">A+</button>
+            </div>
+        </div>
+
+        <div class="a11y-group">
+            <button class="a11y-option-btn" id="a11yContrastBtn">
+                🌓 تباين عالٍ
+            </button>
+        </div>
+
+        <div class="a11y-group">
+            <button class="a11y-option-btn" id="a11yMotionBtn">
+                🎞️ إيقاف الحركة والأنيميشن
+            </button>
+        </div>
+
+        <div class="a11y-group">
+            <button class="a11y-option-btn" id="a11yReadingBtn">
+                🔤 خط أوضح للقراءة
+            </button>
+        </div>
+
+        <div class="a11y-group">
+            <button class="a11y-option-btn a11y-reset-btn" id="a11yResetAllBtn">
+                ↺ إعادة كل الإعدادات
+            </button>
+        </div>
+    </div>
 
 <!-- زر التواصل العائم -->
     <button class="suggest-btn" onclick="openSuggestModal()">💡 اقترح قطعة للمتحف</button>
@@ -159,7 +255,7 @@
     <!-- نافذة الاقتراحات المنبثقة (Suggestion Modal) -->
     <div id="suggestModal" class="modal" onclick="closeSuggestModal(event)">
         <div class="modal-content suggest-box" onclick="event.stopPropagation()">
-            <button class="close-btn" onclick="closeSuggestModal()">&times;</button>
+            <button class="close-btn" onclick="closeSuggestModal()" aria-label="إغلاق نافذة الاقتراحات">&times;</button>
             
             <div class="suggest-form">
                 <h2>اقتراح قطعة أثرية جديدة 📜</h2>
@@ -187,10 +283,10 @@
 
 
     
-<!-- النافذة المنبثقة (عن المتحف والمصمم) -->
+<!-- النافذة المنبثقة (عن المتحف ) -->
 <div id="aboutModal" class="custom-modal">
     <div class="modal-card">
-        <span class="close-modal-btn" onclick="closeAboutModal()">&times;</span>
+        <span class="close-modal-btn" onclick="closeAboutModal()" role="button" tabindex="0" aria-label="إغلاق" onkeydown="if(event.key==='Enter'||event.key===' '){closeAboutModal();}">&times;</span>
         
         <div class="modal-info-section">
             <h2>متحف جوهرة الحضارة</h2>
@@ -230,28 +326,17 @@ window.onclick = function(event) {
 
 
 
-
-
-<div id="tut-container">
-    <img src="LOGO-removebg-preview.png" alt="Tutankhamun" class="tut-img">
-    
-    <div id="welcome-bubble">
-        <span id="welcome-text"></span>
-    </div>
-</div>
-
-
-
-
-<!-- قسم الزيارة للمتحف المصري الإلكتروني -->
 <section class="visit-museum-section">
-    <div class="visit-content">
-        <h2>تعرف على المزيد من الآثار 🏛️</h2>
-        <p>اكتشف كنوز التاريخ المصري في رحلة رقمية لا تُنسى. يمكنك الآن زيارة "المتحف المصري الإلكتروني" والاطلاع على آلاف القطع الأثرية النادرة.</p>
-        <a href="https://egymonuments.gov.eg/" target="_blank" class="visit-btn">زيارة المتحف الإلكتروني 🚀</a>
+    <div class="visit-card">
+        <div class="visit-icon">🏛️</div>
+        <h2>اكتشف المزيد من كنوزنا</h2>
+        <p>رحلة رقمية عبر الزمن تنتظرك في المتحف المصري الإلكتروني.</p>
+        <a href="https://egymonuments.gov.eg/" target="_blank" class="visit-btn">
+            ابدأ الرحلة الآن
+            <span class="btn-arrow">➔</span>
+        </a>
     </div>
 </section>
-
 
 
 <!-- قسم التوقيع السينمائي الكبير في منتصف الصفحة -->

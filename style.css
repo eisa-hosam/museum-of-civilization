@@ -1,10 +1,3 @@
-
-
-
-
-
-
-
 /* تهيئة التصميم العام للصفحة */
 * {
     margin: 0;
@@ -67,6 +60,180 @@ header p {
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 25px;
     margin-bottom: 40px;
+}
+
+/* ============================================================
+   شاشة الدخول لاختيار الأجنحة + شبكة الأقسام الأربعة + عرض الجناح
+   ============================================================ */
+
+/* شاشة الدخول */
+.wings-intro {
+    text-align: center;
+    max-width: 700px;
+    margin: 30px auto 60px;
+    padding: 45px 30px;
+    background: radial-gradient(circle at 50% 0%, rgba(212,175,55,0.08), transparent 70%);
+    border: 1px solid rgba(212,175,55,0.25);
+    border-radius: 16px;
+}
+
+.wings-intro-icon {
+    display: inline-block;
+    font-size: 2.6rem;
+    color: #d4af37;
+    margin-bottom: 15px;
+    text-shadow: 0 0 20px rgba(212,175,55,0.5);
+}
+
+.wings-intro-title {
+    font-size: 1.9rem;
+    color: #d4af37;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+}
+
+.wings-intro-text {
+    color: #bbb;
+    line-height: 1.9;
+    font-size: 1rem;
+    margin-bottom: 30px;
+}
+
+.wings-start-btn {
+    background: linear-gradient(135deg, #e8c86b, #d4af37, #9c7a17);
+    color: #1a1305;
+    border: none;
+    padding: 15px 42px;
+    border-radius: 40px;
+    font-size: 1.05rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(212,175,55,0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.wings-start-btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 30px rgba(212,175,55,0.45);
+}
+
+/* شبكة الأقسام الأربعة */
+.wings-grid {
+    display: none;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
+    animation: fadeIn 0.5s ease;
+}
+
+.wings-grid.show {
+    display: grid;
+}
+
+.wing-card {
+    background-color: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 14px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+.wing-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(212, 175, 55, 0.2);
+    border-color: #d4af37;
+}
+
+.wing-card-img {
+    height: 190px;
+    overflow: hidden;
+}
+
+.wing-card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.wing-card:hover .wing-card-img img {
+    transform: scale(1.08);
+}
+
+.wing-card-body {
+    padding: 22px;
+    text-align: center;
+}
+
+.wing-card-body h3 {
+    color: #d4af37;
+    font-size: 1.2rem;
+    margin-bottom: 12px;
+}
+
+.wing-card-body h3 span {
+    font-size: 1.05rem;
+}
+
+.wing-card-body p {
+    color: #aaa;
+    font-size: 0.9rem;
+    line-height: 1.7;
+    margin-bottom: 18px;
+}
+
+.wing-open-btn {
+    display: inline-block;
+    color: #d4af37;
+    font-weight: bold;
+    font-size: 0.95rem;
+    border: 1px solid #d4af37;
+    padding: 9px 22px;
+    border-radius: 30px;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.wing-card:hover .wing-open-btn {
+    background: #d4af37;
+    color: #1a1305;
+}
+
+/* عرض الجناح المفتوح */
+.wing-open-view {
+    display: none;
+    animation: fadeIn 0.4s ease;
+}
+
+.wing-open-view.show {
+    display: block;
+}
+
+.wing-back-btn {
+    background: transparent;
+    border: 1px solid rgba(212,175,55,0.5);
+    color: #d4af37;
+    padding: 10px 24px;
+    border-radius: 30px;
+    font-size: 0.95rem;
+    cursor: pointer;
+    margin-bottom: 25px;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.wing-back-btn:hover {
+    background: #d4af37;
+    color: #1a1305;
+}
+
+@media (max-width: 768px) {
+    .wings-intro {
+        padding: 35px 20px;
+        margin: 15px auto 40px;
+    }
+    .wings-intro-title {
+        font-size: 1.5rem;
+    }
 }
 
 /* تصميم كروت العرض الحركية */
@@ -428,6 +595,266 @@ body {
     background-color: #fff;
 }
 
+/* ============================================================
+   إمكانية الوصول لزوار ذوي الهمم
+   ============================================================ */
+
+/* الزر العائم لفتح قائمة إمكانية الوصول */
+.a11y-toggle-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 56px;
+    height: 56px;
+    background-color: #d4af37;
+    color: #121212;
+    border: none;
+    border-radius: 50%;
+    font-size: 1.6rem;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+    z-index: 1001;
+    transition: transform 0.2s ease, background-color 0.2s;
+}
+
+.a11y-toggle-btn:hover,
+.a11y-toggle-btn:focus-visible {
+    transform: scale(1.08);
+    background-color: #fff;
+}
+
+/* لوحة إعدادات إمكانية الوصول */
+.a11y-panel {
+    position: fixed;
+    bottom: 88px;
+    right: 20px;
+    width: 260px;
+    max-width: calc(100vw - 40px);
+    background-color: #1a1a1a;
+    border: 1px solid #d4af37;
+    border-radius: 14px;
+    padding: 18px;
+    z-index: 1001;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+    display: none;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.a11y-panel.show {
+    display: flex;
+    animation: fadeIn 0.25s ease;
+}
+
+.a11y-panel-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(212,175,55,0.3);
+    padding-bottom: 10px;
+}
+
+.a11y-panel-head h3 {
+    color: #d4af37;
+    font-size: 1.05rem;
+}
+
+.a11y-close-btn {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.4rem;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.a11y-close-btn:hover {
+    color: #d4af37;
+}
+
+.a11y-group-label {
+    display: block;
+    color: #aaa;
+    font-size: 0.85rem;
+    margin-bottom: 8px;
+}
+
+.a11y-btn-row {
+    display: flex;
+    gap: 8px;
+}
+
+.a11y-btn-row button {
+    flex: 1;
+    background: #262626;
+    border: 1px solid #444;
+    color: #fff;
+    padding: 8px 0;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.a11y-btn-row button:hover,
+.a11y-btn-row button:focus-visible {
+    background: #d4af37;
+    color: #121212;
+    border-color: #d4af37;
+}
+
+.a11y-option-btn {
+    width: 100%;
+    background: #262626;
+    border: 1px solid #444;
+    color: #fff;
+    padding: 10px 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: right;
+    font-size: 0.9rem;
+    transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.a11y-option-btn:hover,
+.a11y-option-btn:focus-visible {
+    background: #d4af37;
+    color: #121212;
+    border-color: #d4af37;
+}
+
+.a11y-option-btn.active {
+    background: #d4af37;
+    color: #121212;
+    border-color: #d4af37;
+}
+
+.a11y-reset-btn {
+    text-align: center;
+    color: #d4af37;
+}
+
+/* زر الاستماع لوصف القطعة داخل نافذة التفاصيل */
+.listen-btn {
+    margin-top: 18px;
+    background: transparent;
+    border: 1px solid #d4af37;
+    color: #d4af37;
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    align-self: flex-start;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.listen-btn:hover,
+.listen-btn:focus-visible {
+    background: #d4af37;
+    color: #121212;
+}
+
+.listen-btn.speaking {
+    background: #d4af37;
+    color: #121212;
+}
+
+/* ==========  وضع التباين العالي  ========== */
+body.a11y-contrast,
+body.a11y-contrast .container,
+body.a11y-contrast .wing-card,
+body.a11y-contrast .art-card,
+body.a11y-contrast .modal-content,
+body.a11y-contrast .a11y-panel,
+body.a11y-contrast .wings-intro {
+    background-color: #000 !important;
+    color: #fff !important;
+    border-color: #ffee00 !important;
+}
+
+body.a11y-contrast .section-title,
+body.a11y-contrast .art-info h3,
+body.a11y-contrast .wing-card-body h3,
+body.a11y-contrast .modal-details h2,
+body.a11y-contrast .nav-logo,
+body.a11y-contrast .wings-intro-title,
+body.a11y-contrast .a11y-panel-head h3 {
+    color: #ffee00 !important;
+}
+
+body.a11y-contrast a,
+body.a11y-contrast p,
+body.a11y-contrast .art-info p,
+body.a11y-contrast .wing-card-body p,
+body.a11y-contrast .modal-details h4,
+body.a11y-contrast .modal-details p {
+    color: #fff !important;
+}
+
+body.a11y-contrast .wing-open-btn,
+body.a11y-contrast .wings-start-btn,
+body.a11y-contrast .suggest-btn,
+body.a11y-contrast .listen-btn,
+body.a11y-contrast .a11y-toggle-btn {
+    background-color: #ffee00 !important;
+    color: #000 !important;
+    border-color: #ffee00 !important;
+}
+
+body.a11y-contrast img {
+    filter: contrast(1.15) grayscale(0.15);
+}
+
+/* ==========  إيقاف الحركة والأنيميشن  ========== */
+body.a11y-no-motion,
+body.a11y-no-motion * {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+}
+
+body.a11y-no-motion .wing-card:hover,
+body.a11y-no-motion .art-card:hover,
+body.a11y-no-motion .suggest-btn:hover,
+body.a11y-no-motion .a11y-toggle-btn:hover {
+    transform: none !important;
+}
+
+/* ==========  خط أوضح للقراءة  ========== */
+body.a11y-reading {
+    font-family: 'Verdana', 'Tahoma', sans-serif !important;
+    letter-spacing: 0.3px;
+}
+
+body.a11y-reading p,
+body.a11y-reading .art-info p,
+body.a11y-reading .wing-card-body p,
+body.a11y-reading .modal-details p {
+    line-height: 2 !important;
+}
+
+/* ==========  إبراز عنصر التركيز عند التنقل بلوحة المفاتيح  ========== */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+.wing-card:focus-visible,
+.art-card:focus-visible {
+    outline: 3px solid #d4af37 !important;
+    outline-offset: 3px;
+}
+
+@media (max-width: 480px) {
+    .a11y-panel {
+        right: 10px;
+        left: 10px;
+        width: auto;
+    }
+    .a11y-toggle-btn {
+        right: 15px;
+    }
+}
+
 /* تنسيق صندوق الفورم */
 .suggest-box {
     max-width: 500px !important;
@@ -683,43 +1110,6 @@ body {
 
 
 
-#tut-container { 
-    position: fixed; 
-    bottom: 120px; /* مرفوع للأعلى لتجنب تداخل العناصر */
-    left: 30px; 
-    z-index: 9999; 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.tut-img {
-    width: 320px; /* تحكم في حجم الصورة هنا */
-    height: auto;
-}
-
-#welcome-bubble { 
-    margin-bottom: 15px; 
-    padding: 10px 15px; 
-    background: #fff; /* خلفية بيضاء لتبرز النص الأسود */
-    border-radius: 15px; 
-    border: 2px solid #d4af37; 
-    font-weight: bold; 
-    color: black; /* الكتابة باللون الأسود */
-    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-    min-width: 200px;
-    text-align: center;
-}
-
-#welcome-bubble {
-    background-color: white; /* خلفية بيضاء للنص */
-    color: black;            /* نص أسود */
-    border: 2px solid #d4af37;
-    /* ... باقي التنسيقات */
-}
-
-
-
 #audioBtn {
     padding: 12px 24px;
     font-size: 16px;
@@ -747,7 +1137,7 @@ body {
 
 
 /* تمييز خاص لكروت الرؤساء */
-#leaders-gallery .art-card img {
+#wing-gallery.leaders-wing .art-card img {
     border-radius: 50%;
     width: 150px;
     height: 150px;
@@ -757,7 +1147,7 @@ body {
     border: 3px solid #d4af37;
 }
 
-#leaders-gallery .art-info {
+#wing-gallery.leaders-wing .art-info {
     text-align: center;
 }
 
@@ -765,46 +1155,47 @@ body {
 
 
 .visit-museum-section {
-    margin: 50px auto;
-    padding: 40px 20px;
+    padding: 80px 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.visit-card {
+    background: linear-gradient(145deg, #1e1e1e, #0f0f0f);
+    padding: 40px;
+    border-radius: 25px;
     text-align: center;
-    background: linear-gradient(rgba(20, 20, 20, 0.9), rgba(20, 20, 20, 0.9)), 
-                url('https://images.unsplash.com/photo-1577083552431-6e5501aa6878?q=80&w=1200'); /* صورة خلفية أثرية */
-    background-size: cover;
-    background-position: center;
-    border-radius: 15px;
     border: 1px solid #d4af37;
-    box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+    max-width: 500px;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
-.visit-content h2 {
-    color: #d4af37;
-    margin-bottom: 15px;
-    font-size: 1.8rem;
+.visit-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
 }
 
-.visit-content p {
-    color: #ccc;
-    margin-bottom: 25px;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-    line-height: 1.6;
+.visit-icon {
+    font-size: 50px;
+    margin-bottom: 20px;
 }
 
 .visit-btn {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 25px;
     padding: 12px 30px;
-    background-color: #d4af37;
+    background: #d4af37;
     color: #000;
     text-decoration: none;
     font-weight: bold;
-    border-radius: 30px;
-    transition: transform 0.3s, background-color 0.3s;
+    border-radius: 50px;
+    transition: 0.3s;
 }
 
 .visit-btn:hover {
-    background-color: #fff;
+    background: #fff;
     transform: scale(1.05);
 }
 
@@ -1093,7 +1484,7 @@ body {
 
 /* تنسيق زر صانع المتحف في النافبار */
 .nav-links li a.nav-builder-btn {
-    background-color: #d4af37; /* اللون الذهبي الخاص بموقعك */
+    background-color: #d4af37; 
     color: #000 !important;
     padding: 8px 15px;
     border-radius: 5px;
