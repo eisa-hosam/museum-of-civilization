@@ -1,353 +1,1256 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" translate="no">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>متحف جوهرة الحضارة</title>
-    <!-- ربط ملف التنسيق الخارجي -->
-    <link rel="stylesheet" href="style.css">
-
-    
-    <link rel="icon" type="image/png" href="LOGO-removebg-preview.png">
-    
+<meta charset="UTF-8">
+<meta name="google" content="notranslate">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>متحف إرث الحضارة | رحلة عبر تاريخ الإنسانية</title>
+<meta name="description" content="متحف رقمي تفاعلي يجمع كنوز مصر القديمة وحضارات العالم: مصر، الرومان، الإسلام، اليونان، بلاد الرافدين وحضارات العالم، مع قسم تفاعلي لتعلم الهيروغليفية.">
+<meta name="keywords" content="متحف رقمي, حضارات, مصر القديمة, هيروغليفية, تاريخ, آثار, رومان, يونان, بلاد الرافدين, العراق, الإسكندر, رمسيس">
+<meta property="og:type" content="website">
+<meta property="og:title" content="متحف إرث الحضارة | رحلة عبر تاريخ الإنسانية">
+<meta property="og:description" content="متحف رقمي تفاعلي يجمع كنوز مصر القديمة وحضارات العالم، مع خط زمني حي، مقارن حضارات، واختبار شخصية تاريخية.">
+<meta property="og:image" content="logo.png">
+<meta property="og:locale" content="ar_AR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="متحف إرث الحضارة">
+<meta name="twitter:description" content="رحلة تفاعلية عبر تاريخ الإنسانية.. أجنحة، خط زمني حي، ولعبة تعلّم اللغات القديمة.">
+<meta name="twitter:image" content="logo.png">
+<meta name="theme-color" content="#0b3d91">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="logo.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@400..700&family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="features.css">
+<link rel="stylesheet" href="mission-game.css">
+<link rel="stylesheet" href="additions.css">
 </head>
 <body>
+<!-- =====================================================================
+     مستودع الرموز (SVG Sprite) - يُستخدم في شعار الموقع، البطل، الهيروغليفية
+     ===================================================================== -->
+<svg class="icon-sprite" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="hg-ankh" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm-1.2 8.6L7 14.4l1.4 1.4 2.4-2.4V22h2.4v-8.6l2.4 2.4 1.4-1.4-3.8-3.8a5.9 5.9 0 0 1-2.4 0Z"/></symbol>
+  <symbol id="hg-eye" viewBox="0 0 64 64"><path fill="currentColor" d="M4 30c8-14 20-18 28-18s20 4 28 18c-8 10-18 16-28 16S12 40 4 30Zm28-9a9 9 0 1 0 0 18 9 9 0 0 0 0-18Zm0 4a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm-2 24c-2 6-2 10 2 12M18 46c-2 4-1 8 3 10"/></symbol>
+  <symbol id="hg-sun" viewBox="0 0 64 64"><circle cx="32" cy="26" r="12" fill="currentColor"/><path stroke="currentColor" stroke-width="3" d="M8 26h6M50 26h6M32 4v6M14 8l4 4M50 8l-4 4"/><path fill="currentColor" d="M20 44c4 6 8 8 12 8s8-2 12-8H20Z"/></symbol>
+  <symbol id="hg-scarab" viewBox="0 0 64 64"><ellipse cx="32" cy="34" rx="18" ry="14" fill="currentColor"/><circle cx="32" cy="18" r="8" fill="currentColor"/><path stroke="currentColor" stroke-width="3" fill="none" d="M14 34c-6 2-10 6-10 12M50 34c6 2 10 6 10 12M32 20V6"/></symbol>
+  <symbol id="hg-owl" viewBox="0 0 64 64"><path fill="currentColor" d="M32 8C18 8 10 20 10 34c0 12 8 22 22 22s22-10 22-22C54 20 46 8 32 8Zm-9 20a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm18 0a5 5 0 1 1 0 10 5 5 0 0 1 0-10ZM32 42l-5 8h10l-5-8Z"/></symbol>
+  <symbol id="hg-lion" viewBox="0 0 64 64"><circle cx="32" cy="26" r="14" fill="currentColor"/><circle cx="32" cy="26" r="6" fill="var(--blue-deep,#041233)"/><path fill="currentColor" d="M10 20a10 10 0 0 1 8 12 10 10 0 0 1-8-12Zm44 0a10 10 0 0 0-8 12 10 10 0 0 0 8-12Z"/><path fill="currentColor" d="M20 44h24l-4 12H24l-4-12Z"/></symbol>
+  <symbol id="hg-water" viewBox="0 0 64 64"><path stroke="currentColor" stroke-width="4" fill="none" d="M4 20c8-8 16 8 24 0s16-8 24 0M4 34c8-8 16 8 24 0s16-8 24 0M4 48c8-8 16 8 24 0s16-8 24 0"/></symbol>
+  <symbol id="hg-star" viewBox="0 0 64 64"><path fill="currentColor" d="m32 4 7 18 19 2-14 13 4 19-16-10-16 10 4-19-14-13 19-2z"/></symbol>
+  <symbol id="hg-jar" viewBox="0 0 64 64"><path fill="currentColor" d="M22 8h20v8l6 8v28a6 6 0 0 1-6 6H22a6 6 0 0 1-6-6V24l6-8V8Z"/><rect x="24" y="4" width="16" height="6" fill="currentColor"/></symbol>
+  <symbol id="hg-feather" viewBox="0 0 64 64"><path fill="currentColor" d="M32 4c6 10 6 20 2 30-4 10-10 18-10 26h-4c2-10 6-18 8-26-8 4-14 12-16 20l-4-2c4-16 14-28 24-48Z"/></symbol>
+  <symbol id="hg-snake" viewBox="0 0 64 64"><path stroke="currentColor" stroke-width="5" fill="none" stroke-linecap="round" d="M10 54c10 0 6-14 16-14s6 14 16 14 6-14 16-14"/><circle cx="10" cy="10" r="5" fill="currentColor"/></symbol>
+  <symbol id="hg-falcon" viewBox="0 0 64 64"><path fill="currentColor" d="M32 6c4 8 16 10 26 8-8 8-10 14-8 22-8-2-16 2-20 10-4-8-12-12-20-10 2-8 0-14-8-22 10 2 22 0 26-8-6 6-12 8-18 8 8 8 12 20 22 22 10-2 14-14 22-22-6 0-12-2-18-8h-4Z"/></symbol>
+  <symbol id="hg-hand" viewBox="0 0 64 64"><path fill="currentColor" d="M20 60V30l-8-14 5-3 9 14V10h6v18l4-16 6 1-4 20 6-14 5 2-6 16h6l4-10 5 2-6 15v16H20Z"/></symbol>
+  <symbol id="hg-hand2" viewBox="0 0 64 64"><path fill="currentColor" d="M14 58V28h36v30a6 6 0 0 1-6 6H20a6 6 0 0 1-6-6ZM20 28V8h6v20h-6Zm9 0V4h6v24h-6Zm9 0V8h6v20h-6Z"/></symbol>
+  <symbol id="hg-mouth" viewBox="0 0 64 64"><path fill="currentColor" d="M6 32c8-10 20-14 26-14s18 4 26 14c-8 10-20 14-26 14S14 42 6 32Z"/></symbol>
+  <symbol id="hg-basket" viewBox="0 0 64 64"><path fill="currentColor" d="M10 24h44l-6 32H16L10 24Z"/><path stroke="currentColor" stroke-width="3" fill="none" d="M14 24C14 12 22 6 32 6s18 6 18 18"/></symbol>
+  <symbol id="hg-gate" viewBox="0 0 64 64"><path fill="currentColor" d="M10 58V16l22-12 22 12v42H44V28H20v30H10Z"/></symbol>
+  <symbol id="hg-turtle" viewBox="0 0 64 64"><ellipse cx="32" cy="34" rx="20" ry="14" fill="currentColor"/><circle cx="12" cy="26" r="6" fill="currentColor"/><path fill="currentColor" d="M14 48 6 58M50 48l8 10M14 20 6 10M50 20l8-10"/></symbol>
+  <symbol id="hg-frog" viewBox="0 0 64 64"><ellipse cx="32" cy="38" rx="16" ry="14" fill="currentColor"/><circle cx="20" cy="20" r="7" fill="currentColor"/><circle cx="44" cy="20" r="7" fill="currentColor"/><path fill="currentColor" d="M10 46 2 60M54 46l8 14M22 50l-6 12M42 50l6 12"/></symbol>
+  <symbol id="hg-ibis" viewBox="0 0 64 64"><path fill="currentColor" d="M46 8c-10 2-16 10-16 18l-22 2 2 6 20-2c0 6 2 10 6 14l-14 12 4 4 14-12c4 3 9 4 14 3l-2-6c-8 2-14-2-16-10 8-2 12-8 14-16l-4-1c-2 6-5 10-10 11 1-6 4-9 10-11l0-12Z"/></symbol>
+  <symbol id="hg-mountain" viewBox="0 0 64 64"><path fill="currentColor" d="M4 54 22 20l10 14 8-10 20 30H4Z"/></symbol>
+  <symbol id="hg-house" viewBox="0 0 64 64"><path fill="currentColor" d="M32 6 58 26v32H38V40H26v18H6V26L32 6Z"/></symbol>
+  <symbol id="hg-chick" viewBox="0 0 64 64"><circle cx="34" cy="24" r="12" fill="currentColor"/><circle cx="26" cy="20" r="3" fill="var(--blue-deep,#041233)"/><path fill="currentColor" d="M14 24l8 2-2 6-8-2 2-6ZM24 36c-4 10-6 18-2 24h24c4-6 2-14-2-24H24Z"/></symbol>
+  <symbol id="hg-leaf" viewBox="0 0 64 64"><path fill="currentColor" d="M32 4c14 6 22 18 22 30 0 14-10 26-22 26S10 48 10 34c0-12 8-24 22-30Zm0 8v42" stroke="var(--blue-deep,#041233)" stroke-width="2"/></symbol>
+  <symbol id="hg-viper" viewBox="0 0 64 64"><path stroke="currentColor" stroke-width="5" stroke-linecap="round" fill="none" d="M8 20c10-8 6 12 16 12s6-16 16-8 6 20 16 12"/></symbol>
+  <symbol id="hg-arm" viewBox="0 0 64 64"><path fill="currentColor" d="M6 30h34l14-14 5 5-16 16H6v-7Z"/></symbol>
+  <symbol id="hg-bird" viewBox="0 0 64 64"><path fill="currentColor" d="M32 10c10 0 20 6 26 16-8-2-14 0-18 6 6 2 10 6 12 12-8-4-14-4-20 0-8-4-14-2-20 4 0-10 4-16 10-20-6-2-12 0-16 6C10 22 18 12 32 10Z"/></symbol>
+  <symbol id="hg-pyramid" viewBox="0 0 64 64"><path fill="currentColor" d="M32 8 58 56H6L32 8Zm0 10-4 8h8l-4-8Z"/></symbol>
+</svg>
 
-
-
-
-
-<div class="loader-container">
-    <div class="drawing-box">
-        <svg viewBox="0 0 100 100">
-            <rect x="5" y="5" width="90" height="90" fill="none" stroke="#d4af37" stroke-width="2" class="border-draw" />
-        </svg>
-        <img src="LOGO-removebg-preview.png" alt="photo"  class="tut-icon" >
-         
-    </div>
-
+<!-- =====================================================================
+     1) شاشة التحميل
+     ===================================================================== -->
+<div id="loader">
+  <div class="logo-orbit logo-orbit-lg">
+    <span class="logo-orbit-ring"></span>
+    <span class="logo-orbit-ring logo-orbit-ring2"></span>
+    <span class="logo-orbit-dot d1"></span>
+    <span class="logo-orbit-dot d2"></span>
+    <span class="logo-orbit-dot d3"></span>
+    <img src="logo.png" alt="متحف إرث الحضارة" class="loader-logo">
+  </div>
+  <div class="loader-text">متحف إرث الحضارة</div>
+  <div class="loader-bar"></div>
 </div>
 
-<!-- شريط التنقل العلوي المربوط بأقسام متحفك الحالية -->
-<nav class="main-navbar">
-    <div class="nav-logo">جوهرة الحضارة</div>
-    <ul class="nav-links">
-        <li><a href="javascript:void(0)" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="active">الرئيسية</a></li>
-        <li><a href="javascript:void(0)" onclick="openWingsSection()">المعروضات</a></li>
-        <li><a href="javascript:void(0)" onclick="openAboutModal()">عن المتحف</a></li>
-        <li><a href="https://eisa-hosam.github.io/Portfolio/" target="_blank" class="nav-builder-btn">صانع المتحف</a></li>
-        <li><a href="https://wa.me/201142403263" target="_blank" class="contact-btn">تواصل معي</a></li>
-    </ul>
-</nav>
-
-
-
-
-
-<!-- ============================================================
- 
-=================================================================-->
-
-<div id="dyl-root">
-
-  <!-- الشريط الثابت اللي بيفضل ظاهر فوق بعد ما اليوزر ياخد نتيجته -->
-  <div class="dyl-topbar" id="dylTopbar">
-    <span class="dyl-topbar-text">
-      أنت تشبه <strong id="dylTopbarName"></strong>
+<!-- =====================================================================
+     2) شريط التنقل
+     ===================================================================== -->
+<nav id="site-nav">
+  <a href="#top" class="nav-brand">
+    <span class="logo-orbit logo-orbit-sm">
+      <span class="logo-orbit-ring"></span>
+      <span class="logo-orbit-dot d1"></span>
+      <span class="logo-orbit-dot d2"></span>
+      <img src="logo.png" alt="متحف إرث الحضارة" class="brand-logo">
     </span>
-    <button class="dyl-topbar-retake" id="dylTopbarRetake">أعد الاختبار</button>
-    <button class="dyl-topbar-close" id="dylTopbarClose" aria-label="إغلاق">×</button>
+    <span>متحف إرث الحضارة</span>
+  </a>
+  <div class="nav-links" id="nav-links">
+    <a href="#wings" data-i18n="nav.wings">الأجنحة</a>
+    <a href="#intangible-heritage">التراث اللامادي</a>
+    <a href="#world-heritage">تراث العالم</a>
+    <a href="#timeline" data-i18n="nav.timeline">الخط الزمني الحي</a>
+    <a href="#real-map" data-i18n="nav.realmap">خريطة المواقع الحقيقية</a>
+    <a href="#compare" data-i18n="nav.compare">قارن بين حضارتين</a>
+    <a href="#daily-challenge" data-i18n="nav.daily">تحدي اليوم</a>
+    <a href="#stats" data-i18n="nav.stats">المتحف بالأرقام</a>
+    <a href="#" data-open-modal="about-modal" data-i18n="nav.about">عن المتحف</a>
+    <a href="https://eisa-hosam.github.io/Portfolio/" target="_blank" rel="noopener" data-i18n="nav.author">عن صاحب المتحف</a>
+    <a href="https://wa.me/201142403263?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%AD%D8%A8%20%D8%A3%D9%82%D8%AA%D8%B1%D8%AD%20%D8%AD%D8%B6%D8%A7%D8%B1%D8%A9%20%D8%AC%D8%AF%D9%8A%D8%AF%D8%A9%20%D9%84%D9%85%D8%AA%D8%AD%D9%81%20%D8%A7%D9%84%D8%AD%D8%B6%D8%A7%D8%B1%D8%A7%D8%AA" target="_blank" rel="noopener" class="btn btn-gold" style="padding:10px 22px;" data-i18n="nav.suggest">اقترح حضارة</a>
   </div>
 
-  <div class="dyl-overlay" id="dylOverlay">
-    <div class="dyl-frame" id="dylFrame">
-      <span class="dyl-corner tl"></span>
-      <span class="dyl-corner tr"></span>
-      <span class="dyl-corner bl"></span>
-      <span class="dyl-corner br"></span>
-      <button class="dyl-close" id="dylClose" aria-label="إغلاق">×</button>
-
-      <div id="dylStageWelcome">
-        <svg class="dyl-eye" viewBox="0 0 64 40" fill="none" stroke-width="1.5">
-          <path d="M2 20C14 4 50 4 62 20C50 36 14 36 2 20Z"/>
-          <circle cx="32" cy="20" r="8"/>
-          <circle cx="32" cy="20" r="2.5" fill="currentColor" style="color:var(--gold-400)"/>
-        </svg>
-        <p class="dyl-eyebrow">جوهرة الحضارة</p>
-        <h2 class="dyl-title">اكتشف أثرك</h2>
-        <p class="dyl-sub">
-          خمسة أسئلة تفصلك عن معرفة أي شخصية من مصر القديمة تشبه روحك.
-          هل أنت قائد، أم حكيم، أم مقاتل، أم صانع؟
-        </p>
-        <button class="dyl-btn" id="dylStart">ابدأ الرحلة</button>
-        <button class="dyl-skip" id="dylSkip">لا شكرًا، ادخل الموقع مباشرة</button>
-      </div>
-
-      <div id="dylStageQuiz" style="display:none;">
-        <div class="dyl-quiz-head">
-          <div class="dyl-progress-track"><div class="dyl-progress-fill" id="dylProgress"></div></div>
-          <span class="dyl-progress-label" id="dylProgressLabel">1 / 5</span>
-        </div>
-        <h3 class="dyl-question" id="dylQuestion"></h3>
-        <div class="dyl-options" id="dylOptions"></div>
-      </div>
-
-      <div id="dylStageResult" style="display:none;">
-        <span class="dyl-result-badge" id="dylResultBadge">أثرك هو</span>
-        <h2 class="dyl-result-name" id="dylResultName"></h2>
-        <p class="dyl-result-tag" id="dylResultTag"></p>
-        <p class="dyl-result-desc" id="dylResultDesc"></p>
-        <div class="dyl-result-actions">
-          <button class="dyl-btn" id="dylShare">شارك نتيجتك</button>
-          <button class="dyl-btn dyl-ghost" id="dylEnter">ادخل المتحف</button>
-        </div>
-      </div>
-
+  <div class="nav-search" id="nav-search">
+    <button class="nav-search-toggle" id="nav-search-toggle" aria-label="بحث في المتحف" title="بحث" data-i18n-aria="nav.searchAria" data-i18n-title="nav.search">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+    </button>
+    <div class="nav-search-box" id="nav-search-box">
+      <input type="text" id="nav-search-input" placeholder="دوّر على قطعة أثرية، حاكم، أو حضارة..." autocomplete="off" data-i18n-placeholder="nav.searchPlaceholder">
+      <button type="button" class="nav-voice-btn" id="nav-voice-btn" title="بحث صوتي" aria-label="بحث صوتي">🎙️</button>
+      <div class="nav-search-results" id="nav-search-results"></div>
     </div>
   </div>
-</div>
 
-
-
-
-
-
-    <!-- رأس الصفحة والعنوان -->
-    <header>
-        <h1>متحف جوهرة الحضارة</h1>
-        <p>استكشف أقسام التاريخ والفن من مختلف حضارات العالم</p>
-    </header>
-
-    <div class="container" id="museum-gallery">
-
-        <!-- شاشة الدخول: تظهر أول ما اليوزر يوصل لقسم المعروضات -->
-        <div class="wings-intro" id="wingsIntro">
-            <span class="wings-intro-icon">𓂀</span>
-            <h2 class="wings-intro-title">اختر جناحك وابدأ رحلتك</h2>
-            <p class="wings-intro-text">
-                يضم متحف جوهرة الحضارة أربعة أجنحة رئيسية، كل جناح يحمل بين طياته
-                كنوزاً من عصر وحضارة مختلفة. اضغط الزر وابدأ الاستكشاف.
-            </p>
-            <button class="wings-start-btn" id="wingsStartBtn">ابدأ تصفح المتحف 🏛️</button>
-        </div>
-
-        <!-- شبكة الأقسام الأربعة: بتظهر بعد الضغط على زر البداية -->
-        <div class="wings-grid" id="wingsGrid">
-
-            <div class="wing-card" data-wing="egypt">
-                <div class="wing-card-img">
-                    <img src="https://i.pinimg.com/1200x/33/dd/d0/33ddd0e3c8a03cf49b24ab256ed4b805.jpg" alt="جناح الآثار المصرية القديمة">
-                </div>
-                <div class="wing-card-body">
-                    <h3>جناح الآثار المصرية القديمة <span>🇪🇬</span></h3>
-                    <p>15 قطعة أثرية خالدة تحكي قصة عظمة الحضارة الفرعونية.</p>
-                    <span class="wing-open-btn">ادخل الجناح ⟵</span>
-                </div>
-            </div>
-
-            <div class="wing-card" data-wing="leaders">
-                <div class="wing-card-img">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_RdEshCCbDY9v4u4yaC1QJnPsHlS-6uuB2fwwMeHxBQ&s=10" alt="جناح رؤساء العصر الحديث">
-                </div>
-                <div class="wing-card-body">
-                    <h3>رؤساء العصر الحديث <span>🏛️</span></h3>
-                    <p>محطات في تاريخ مصر الحديث من خلال قادتها الخمسة.</p>
-                    <span class="wing-open-btn">ادخل الجناح ⟵</span>
-                </div>
-            </div>
-
-            <div class="wing-card" data-wing="paintings">
-                <div class="wing-card-img">
-                    <img src="https://i.pinimg.com/1200x/62/f8/e5/62f8e5fca7ac1915616148f475ea503c.jpg" alt="قاعة اللوحات الفنية العالمية">
-                </div>
-                <div class="wing-card-body">
-                    <h3>قاعة اللوحات الفنية العالمية <span>🎨</span></h3>
-                    <p>روائع الفن التشكيلي العالمي عبر العصور المختلفة.</p>
-                    <span class="wing-open-btn">ادخل الجناح ⟵</span>
-                </div>
-            </div>
-
-            <div class="wing-card" data-wing="world">
-                <div class="wing-card-img">
-                    <img src="https://images.unsplash.com/photo-1552832230-c0197dd311b5?q=80&w=600" alt="جناح الآثار والحضارات العالمية">
-                </div>
-                <div class="wing-card-body">
-                    <h3>الآثار والحضارات العالمية <span>🌍</span></h3>
-                    <p>رحلة حول العالم بين أبرز آثار وحضارات الأمم القديمة.</p>
-                    <span class="wing-open-btn">ادخل الجناح ⟵</span>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- عرض الجناح بعد فتحه: بيتحط فيه المعروضات الحقيقية بتاعت القسم -->
-        <div class="wing-open-view" id="wingOpenView">
-            <button class="wing-back-btn" id="wingBackBtn">⟶ العودة للأقسام</button>
-            <div class="section-title" id="wingOpenTitle"></div>
-            <main class="museum-container" id="wing-gallery"></main>
-        </div>
-
+  <div class="nav-lang" id="nav-lang">
+    <button type="button" class="nav-lang-btn" id="nav-lang-btn" aria-label="تغيير اللغة" title="اللغة">
+      <span id="nav-lang-flag">🌐</span><span id="nav-lang-code">AR</span>
+    </button>
+    <div class="nav-lang-menu" id="nav-lang-menu">
+      <button type="button" class="nav-lang-opt" data-lang="ar">العربية</button>
+      <button type="button" class="nav-lang-opt" data-lang="en">English</button>
+      <button type="button" class="nav-lang-opt" data-lang="fr">Français</button>
+      <button type="button" class="nav-lang-opt" data-lang="es">Español</button>
+      <button type="button" class="nav-lang-opt" data-lang="de">Deutsch</button>
     </div>
+  </div>
 
-    <!-- النافذة المنبثقة للتفاصيل (Modal) -->
-    <div id="museumModal" class="modal" onclick="closeMuseum(event)">
-        <div class="modal-content" onclick="event.stopPropagation()">
-            <button class="close-btn" onclick="closeMuseum()" aria-label="إغلاق نافذة التفاصيل">&times;</button>
-            <img id="modalImg" class="modal-img" src="" alt="صورة الأثر">
-            <div class="modal-details">
-                <h2 id="modalTitle">اسم القطعة</h2>
-                <h4 id="modalArtist">المصدر</h4>
-                <p id="modalDesc">الشرح والتفاصيل...</p>
-                <button class="listen-btn" id="listenBtn" onclick="toggleReadAloud()" aria-label="استماع لوصف القطعة">
-                    🔊 استمع للوصف
-                </button>
-            </div>
-        </div>
+  <div class="nav-auth" id="nav-auth">
+    <button class="nav-admin-btn" id="nav-admin-btn" title="لوحة تحكم الأدمن" style="display:none;">
+      <svg width="18" height="18" viewBox="0 0 64 64"><use href="#hg-eye"></use></svg>
+    </button>
+    <button class="nav-user-chip" id="nav-user-chip" style="display:none;" title="صفحتي">
+      <span class="nav-user-avatar" id="nav-user-avatar"></span>
+      <span class="nav-user-name" id="nav-user-name"></span>
+    </button>
+    <button class="nav-login-btn" id="nav-login-btn">
+      <span class="nav-login-pulse"></span>
+      <svg width="17" height="17" viewBox="0 0 64 64"><use href="#hg-ankh"></use></svg>
+      <span data-i18n="nav.login">تسجيل الدخول</span>
+    </button>
+  </div>
+
+  <button class="nav-toggle" id="nav-toggle" aria-label="فتح القائمة" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="nav-links-overlay" id="nav-links-overlay"></div>
+
+<!-- =====================================================================
+     3) قسم البطل (Hero)
+     ===================================================================== -->
+<header class="pharaoh-hero" id="top">
+  <div class="hero-pyramids"></div>
+  <div id="hero-glyphs"></div>
+
+  <div class="hero-content">
+    <div class="logo-orbit logo-orbit-lg hero-logo">
+      <span class="logo-orbit-ring"></span>
+      <span class="logo-orbit-ring logo-orbit-ring2"></span>
+      <span class="logo-orbit-dot d1"></span>
+      <span class="logo-orbit-dot d2"></span>
+      <span class="logo-orbit-dot d3"></span>
+      <img src="logo.png" alt="متحف إرث الحضارة" class="hero-logo-img">
     </div>
-
-
-<!-- زر إمكانية الوصول العائم لخدمة زوار ذوي الهمم -->
-    <button class="a11y-toggle-btn" id="a11yToggleBtn" aria-label="فتح قائمة إمكانية الوصول">♿</button>
-
-    <div class="a11y-panel" id="a11yPanel">
-        <div class="a11y-panel-head">
-            <h3>إمكانية الوصول</h3>
-            <button class="a11y-close-btn" id="a11yCloseBtn" aria-label="إغلاق">&times;</button>
-        </div>
-
-        <div class="a11y-group">
-            <span class="a11y-group-label">حجم الخط</span>
-            <div class="a11y-btn-row">
-                <button id="a11yFontDown" aria-label="تصغير الخط">A-</button>
-                <button id="a11yFontReset" aria-label="حجم الخط الافتراضي">A</button>
-                <button id="a11yFontUp" aria-label="تكبير الخط">A+</button>
-            </div>
-        </div>
-
-        <div class="a11y-group">
-            <button class="a11y-option-btn" id="a11yContrastBtn">
-                🌓 تباين عالٍ
-            </button>
-        </div>
-
-        <div class="a11y-group">
-            <button class="a11y-option-btn" id="a11yMotionBtn">
-                🎞️ إيقاف الحركة والأنيميشن
-            </button>
-        </div>
-
-        <div class="a11y-group">
-            <button class="a11y-option-btn" id="a11yReadingBtn">
-                🔤 خط أوضح للقراءة
-            </button>
-        </div>
-
-        <div class="a11y-group">
-            <button class="a11y-option-btn a11y-reset-btn" id="a11yResetAllBtn">
-                ↺ إعادة كل الإعدادات
-            </button>
-        </div>
+    <span class="hero-eyebrow">
+      <svg viewBox="0 0 64 64"><use href="#hg-eye"></use></svg>
+      <span data-i18n="hero.eyebrow">رحلة عبر آلاف السنين</span>
+    </span>
+    <h1 class="hero-title"><span data-i18n="hero.title1">اكتشف</span> <span class="accent" data-i18n="hero.title2">كنوز الحضارات</span><br><span data-i18n="hero.title3">في متحف واحد</span></h1>
+    <p class="hero-sub" data-i18n="hero.sub">من ضفاف النيل إلى بابل وأثينا وروما، جولة تفاعلية بين أعظم حضارات التاريخ الإنساني.</p>
+    <div class="hero-actions">
+      <a href="#wings" class="btn btn-gold">
+        <svg width="18" height="18" viewBox="0 0 64 64"><use href="#hg-pyramid"></use></svg>
+        <span data-i18n="hero.btn1">استكشف الأجنحة</span>
+      </a>
+      <a href="#wings" class="btn btn-outline" data-i18n="hero.btn2">تعلّم لغات الحضارات</a>
+      <button type="button" class="btn btn-gold mission-trigger-btn" data-mission-trigger>
+        <span class="mission-btn-badge">جديد</span>
+        <span>🕹️ مهمة إنقاذ الحضارة</span>
+      </button>
     </div>
+  </div>
 
-<!-- زر التواصل العائم -->
-    <button class="suggest-btn" onclick="openSuggestModal()">💡 اقترح قطعة للمتحف</button>
+  <div class="scroll-cue"><span data-i18n="hero.scroll">مرّر للأسفل</span><span class="chevron"></span></div>
+</header>
 
-    <!-- نافذة الاقتراحات المنبثقة (Suggestion Modal) -->
-    <div id="suggestModal" class="modal" onclick="closeSuggestModal(event)">
-        <div class="modal-content suggest-box" onclick="event.stopPropagation()">
-            <button class="close-btn" onclick="closeSuggestModal()" aria-label="إغلاق نافذة الاقتراحات">&times;</button>
-            
-            <div class="suggest-form">
-                <h2>اقتراح قطعة أثرية جديدة 📜</h2>
-                <p>إذا كانت هناك قطعة تريد إضافتها ومعلومات عنها غير متوفرة في المتحف، شاركها معنا!</p>
-                
-                <label>اسمك الكريم:</label>
-                <input type="text" id="visitorName" placeholder="اكتب اسمك هنا...">
-                
-                <label>اسم القطعة الأثرية/اللوحة:</label>
-                <input type="text" id="artifactName" placeholder="مثال: تمثال الذهب، لوحة العشاء الأخير...">
-                
-                <label>المعلومات المتوفرة لديك عنها:</label>
-                <textarea id="artifactInfo" rows="4" placeholder="اكتب هنا كل التفاصيل والمعلومات التي تعرفها عن هذه القطعة..."></textarea>
-                
-                <button class="send-whatsapp-btn" onclick="sendToWhatsApp()">إرسال الاقتراح عبر الواتساب 🚀</button>
-            </div>
-        </div>
+<!-- =====================================================================
+     4) شريط الإحصائيات
+     ===================================================================== -->
+<section class="stats-strip" id="stats">
+  <div class="container stats-grid">
+    <div class="reveal">
+      <div class="stat-num" data-count="6">0</div>
+      <div class="stat-label" data-i18n="stats.wings">أجنحة حضارية</div>
     </div>
-
-
-
-
-
-
-
-
-    
-<!-- النافذة المنبثقة (عن المتحف ) -->
-<div id="aboutModal" class="custom-modal">
-    <div class="modal-card">
-        <span class="close-modal-btn" onclick="closeAboutModal()" role="button" tabindex="0" aria-label="إغلاق" onkeydown="if(event.key==='Enter'||event.key===' '){closeAboutModal();}">&times;</span>
-        
-        <div class="modal-info-section">
-            <h2>متحف جوهرة الحضارة</h2>
-            <p>متحف رقمي تفاعلي تم تأسيسه ليكون نافذة تضيء على روائع التاريخ والفنون الإنسانية. يضم المتحف أجنحة متكاملة تأخذ الزائر في رحلة عبر الزمن لاستكشاف عظمة الآثار المصرية القديمة، وأشهر اللوحات الفنية العالمية.</p>
-        </div>
-
-
-              <hr style="border: 0; border-top: 1px solid rgba(255,204,0,0.3); margin: 20px 0;">
-                <div class="modal-info-section">
-            <h2>لغات البرمجه المستخدم </h2>
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsubI1xnS2EsbFC7IKOtHXy3o2yp5zNGHX8-mLk-0nVw&s" alt="photo" class="ph">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNrurcR0ZLYAWuQp1Pwhc8FwY7weNpfBqzk2ITA3U5rg&s=10" alt="photo" class="ph">
-             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREJ3KVBMzGEhQoq8tylfrG2LNV1DQIRrswahNq08YeCA&s" alt="photo" class="ph">           
-            <p>تم استخدام احدث لغات البرمجه في تصميم هذا الموقع و هي <strong>{HTML5 ,Css3 ,javascript}</strong></p>
-        </div>
-        
-        <button class="modal-close-bottom-btn" onclick="closeAboutModal()">إغلاق</button>
+    <div class="reveal">
+      <div class="stat-num" data-count="5000" data-suffix="+">0</div>
+      <div class="stat-label" data-i18n="stats.years">عام من التاريخ</div>
     </div>
-</div>
-
-<!-- كود الجافا سكريبت البسيط لتشغيل الفتح والإغلاق -->
-<script>
-function openAboutModal() {
-    document.getElementById("aboutModal").style.display = "flex";
-}
-function closeAboutModal() {
-    document.getElementById("aboutModal").style.display = "none";
-}
-// إغلاق النافذة إذا ضغط الزائر خارج المربع الأسود
-window.onclick = function(event) {
-    let modal = document.getElementById("aboutModal");
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}
-</script>
-
-
-
-<section class="hero-section"> <!-- استخدمنا نفس كلاس الإطار العلوي -->
-    <div class="hero-box"> <!-- نفس الحاوية -->
-        <h3>اكتشف المزيد من كنوز مصر</h3>
-        <p>رحلة رقمية عبر الزمن سطرت في المتحف المصري الإلكتروني.</p>
-        <a href="https://egymonuments.gov.eg/" target="_blank" class="main-btn">ابدأ الرحلة الآن ➔</a>
+    <div class="reveal">
+      <div class="stat-num" data-count="150" data-suffix="+">0</div>
+      <div class="stat-label" data-i18n="stats.symbols">رمزًا كتابيًا حقيقيًا من لغات الحضارات</div>
     </div>
+    <div class="reveal">
+      <div class="stat-num" data-count="100" data-suffix="+">0</div>
+      <div class="stat-label" data-i18n="stats.items">قطعة وقصة تاريخية</div>
+    </div>
+  </div>
 </section>
 
+<!-- =====================================================================
+     4ب) في مثل هذا اليوم
+     ===================================================================== -->
+<section class="section otd-section" id="on-this-day">
+  <div class="container">
+    <div class="section-title reveal">
+      <span class="eyebrow" data-i18n="otd.eyebrow">لمحة يومية</span>
+      <h2 data-i18n="otd.title">في مثل هذا اليوم</h2>
+    </div>
+    <div class="otd-card reveal" id="otd-content">جارٍ التحميل...</div>
+  </div>
+</section>
 
-<!-- قسم التوقيع السينمائي الكبير في منتصف الصفحة -->
-<div class="cinema-signature-wrapper">
-    <p class="sub-signature-text">صُمم بكل فخر بواسطة</p>
-    <h1 class="giant-proud-name">عيسى حسام</h1>
+<!-- =====================================================================
+     5) شبكة الأجنحة (الأقسام الحضارية)
+     ===================================================================== -->
+<section class="section" id="wings">
+  <div class="container">
+    <div class="section-title reveal">
+      <span class="eyebrow" data-i18n="wings.eyebrow">أجنحة المتحف</span>
+      <h2 data-i18n="wings.title">ست حضارات.. قصة واحدة للإنسانية</h2>
+      <p data-i18n="wings.sub">اختر جناحًا لتستكشف أبرز آثاره وقصصه وحقائقه المثيرة.</p>
+      <button type="button" class="btn btn-line" style="margin-top:14px;" data-mission-trigger>
+        🕹️ جرّب "مهمة إنقاذ الحضارة" التفاعلية
+      </button>
+    </div>
+
+    <div class="wings-grid">
+      <article class="wing-card" data-wing="egypt">
+        <div class="wing-icon">𓂀</div>
+        <h3>مصر القديمة</h3>
+        <p>آثار الفراعنة والمعابد والمومياوات، وملوك وملكات صنعوا التاريخ كتوت عنخ آمون ورمسيس الثاني وحتشبسوت وكليوباترا.</p>
+        <span class="wing-tag">أقدم الحضارات</span>
+        <div class="wing-more" data-i18n="wings.explore">استكشف الجناح ←</div>
+      </article>
+
+      <article class="wing-card" data-wing="roman">
+        <div class="wing-icon">🏛️</div>
+        <h3>الحضارة الرومانية</h3>
+        <p>العمارة والقانون والطرق التي شكّلت ملامح العالم القديم.</p>
+        <span class="wing-tag">إمبراطورية عظيمة</span>
+        <div class="wing-more" data-i18n="wings.explore">استكشف الجناح ←</div>
+      </article>
+
+      <article class="wing-card" data-wing="islamic">
+        <div class="wing-icon">🕌</div>
+        <h3>الحضارة الإسلامية</h3>
+        <p>الخط العربي، الزخرفة الهندسية، وعمارة روحانية أخّاذة.</p>
+        <span class="wing-tag">فن وعلم</span>
+        <div class="wing-more" data-i18n="wings.explore">استكشف الجناح ←</div>
+      </article>
+
+      <article class="wing-card" data-wing="greek">
+        <div class="wing-icon">🏺</div>
+        <h3>الحضارة اليونانية</h3>
+        <p>الفلسفة والأساطير والفن الكلاسيكي ومكتبة الإسكندرية.</p>
+        <span class="wing-tag">مهد الفلسفة</span>
+        <div class="wing-more" data-i18n="wings.explore">استكشف الجناح ←</div>
+      </article>
+
+      <article class="wing-card" data-wing="mesopotamia">
+        <div class="wing-icon">𒀭</div>
+        <h3>حضارة بلاد الرافدين</h3>
+        <p>سومر وبابل وآشور، الكتابة المسمارية وشريعة حمورابي.</p>
+        <span class="wing-tag">مهد الكتابة</span>
+        <div class="wing-more" data-i18n="wings.explore">استكشف الجناح ←</div>
+      </article>
+
+      <article class="wing-card" data-wing="world">
+        <div class="wing-icon">🌍</div>
+        <h3>حضارات العالم</h3>
+        <p>المايا والإنكا والصين وأفريقيا القديمة ووادي السند.</p>
+        <span class="wing-tag">جولة عالمية</span>
+        <div class="wing-more" data-i18n="wings.explore">استكشف الجناح ←</div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- =====================================================================
+     5ب) جناح مستقل: اللوحات والفنون (بعيدًا عن أجنحة الحضارات)
+     ===================================================================== -->
+<section class="section paintings-section" id="paintings-wing">
+  <div class="container">
+    <div class="section-title reveal">
+      <span class="eyebrow" data-i18n="paintings.eyebrow">ركن مستقل</span>
+      <h2 data-i18n="paintings.title">اللوحات والفنون القديمة</h2>
+      <p data-i18n="paintings.sub">معرض خاص يحتفي بالفن التصويري عبر العصور، بعيدًا عن أجنحة الحضارات الرئيسية.</p>
+    </div>
+
+    <div class="wings-grid single-wing">
+      <article class="wing-card" data-wing="paintings">
+        <div class="wing-icon">🎨</div>
+        <h3>اللوحات والفنون</h3>
+        <p>جداريات المقابر وبورتريهات الفيوم وألوان صمدت آلاف السنين.</p>
+        <span class="wing-tag">فن خالد</span>
+        <div class="wing-more" data-i18n="wings.explore">استكشف الجناح ←</div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- =====================================================================
+     5ج) التراث اللامادي (Intangible Cultural Heritage)
+     عناصر مصرية حقيقية مُسجّلة في قوائم اليونسكو للتراث الثقافي اللامادي —
+     مش بس آثار وقطع مادية، التراث كمان بيعيش في الحرفة والفن الشعبي والحكاية الشفهية.
+     ===================================================================== -->
+<section class="section" id="intangible-heritage">
+  <div class="container">
+    <div class="section-title reveal">
+      <span class="eyebrow">أصالة تتوارثها الأجيال</span>
+      <h2>التراث اللامادي</h2>
+      <p>عناصر مصرية حقيقية مُدرجة رسميًا في قوائم اليونسكو للتراث الثقافي اللامادي — حكاية شفهية، حرفة، وفن شعبي ما زال حيًّا حتى اليوم.</p>
+    </div>
+
+    <div class="wings-grid">
+      <article class="wing-card">
+        <div class="wing-icon">📜</div>
+        <h3>السيرة الهلالية</h3>
+        <p>ملحمة شعرية شفهية تروي رحلة قبيلة بني هلال وترحالها، تُروى بمصاحبة آلة الربابة على يد راوٍ شعبي، وكانت أول عنصر مصري يُسجَّل في قوائم اليونسكو.</p>
+        <span class="wing-tag">2008 · قائمة الصون العاجل</span>
+      </article>
+
+      <article class="wing-card">
+        <div class="wing-icon">🥢</div>
+        <h3>التحطيب</h3>
+        <p>لعبة العصا التقليدية المرتبطة بمهرجانات الصعيد، من أقدم الفنون الشعبية المصرية التي ما زالت تُمارَس حتى اليوم.</p>
+        <span class="wing-tag">2016 · القائمة التمثيلية</span>
+      </article>
+
+      <article class="wing-card">
+        <div class="wing-icon">🎭</div>
+        <h3>الأراجوز</h3>
+        <p>مسرح العرائس اليدوي الشعبي، بصوت مميز ونصوص كوميدية ارتجالية تتناول قضايا الحياة اليومية بأسلوب ساخر.</p>
+        <span class="wing-tag">2018 · قائمة الصون العاجل</span>
+      </article>
+
+      <article class="wing-card">
+        <div class="wing-icon">✍️</div>
+        <h3>الخط العربي</h3>
+        <p>فن كتابة الحروف العربية بجمالية وحرفية عالية، عنصر مشترك سجّلته مصر مع عدد من الدول العربية.</p>
+        <span class="wing-tag">2021 · القائمة التمثيلية</span>
+      </article>
+    </div>
+
+    <p class="real-map-note" style="margin-top:20px;">المصدر: قوائم اليونسكو الرسمية للتراث الثقافي غير المادي (ich.unesco.org).</p>
+  </div>
+</section>
+
+<!-- =====================================================================
+     5د) مواقع التراث العالمي حول العالم (UNESCO World Heritage Sites)
+     قسم مستقل تمامًا عن #intangible-heritage: هنا مواقع مادية (آثار، مدن،
+     حدائق طبيعية) من قائمة اليونسكو للتراث العالمي، مبوّبة حسب الدولة،
+     مصر والمنطقة العربية أولًا ثم باقي دول العالم أبجديًا.
+     المصدر: whc.unesco.org
+     ===================================================================== -->
+<section class="section" id="world-heritage">
+  <div class="container">
+    <div class="section-title reveal">
+      <span class="eyebrow">إرث الإنسانية جمعاء</span>
+      <h2>مواقع التراث العالمي حول العالم</h2>
+      <p>أكثر من 1300 موقع أثري وطبيعي مُدرَج في قائمة اليونسكو للتراث العالمي من 174 دولة — مصر أولًا، ثم باقي دول العالم.</p>
+    </div>
+
+    <div class="wh-toolbar">
+      <div class="wh-search-wrap">
+        <span class="wh-search-icon">🔍</span>
+        <input type="text" id="wh-search" class="wh-search" placeholder="ابحث عن دولة أو موقع...">
+      </div>
+      <div class="wh-stats" id="wh-stats"></div>
+    </div>
+
+    <div class="wh-layout">
+      <aside class="wh-countries" id="wh-country-list" role="listbox" aria-label="قائمة الدول"></aside>
+      <div class="wh-sites" id="wh-sites-panel"></div>
+    </div>
+
+    <p class="real-map-note" style="margin-top:20px;">المصدر: القائمة الرسمية لليونسكو للتراث العالمي (whc.unesco.org).</p>
+  </div>
+</section>
+
+<!-- =====================================================================
+     6) الخط الزمني الحي (Living Timeline) + خريطة تفاعلية
+     ===================================================================== -->
+<section class="section timeline-section" id="timeline">
+  <div class="container">
+    <div class="section-title reveal">
+      <span class="eyebrow" data-i18n="timeline.eyebrow">التاريخ في حركة</span>
+      <h2 data-i18n="timeline.title">الخط الزمني الحي</h2>
+      <p data-i18n="timeline.sub">اسحب المؤشر لأي سنة من 3500 ق.م وحتى اليوم، وشوف كل الحضارات النشطة وقتها على الخط والخريطة معًا.</p>
+    </div>
+
+    <div class="timeline-year-control reveal">
+      <span class="timeline-range-label" data-i18n="timeline.from">3500 ق.م</span>
+      <input type="range" id="timeline-slider" min="-3500" max="2026" value="-2560" step="1">
+      <span class="timeline-range-label" data-i18n="timeline.to">اليوم</span>
+    </div>
+    <div class="timeline-year-now reveal"><span data-i18n="timeline.selectedYear">السنة المختارة:</span> <strong id="timeline-year-label">2560 ق.م</strong></div>
+
+    <div class="timeline-layout reveal">
+      <div class="timeline-scroll" id="timeline-scroll">
+        <div class="timeline-track" id="timeline-track">
+          <div class="timeline-ruler" id="timeline-ruler"></div>
+          <div class="timeline-lanes" id="timeline-lanes"></div>
+          <div class="timeline-playhead" id="timeline-playhead"></div>
+        </div>
+      </div>
+      <div class="timeline-map-wrap">
+        <p class="timeline-map-note">خريطة توضيحية تقريبية (وليست دقيقة جغرافيًا) لمواقع الحضارات</p>
+        <svg viewBox="0 0 300 180" id="timeline-map-svg" class="timeline-map-svg"></svg>
+      </div>
+    </div>
+
+    <div class="timeline-active-list" id="timeline-active-list"></div>
+  </div>
+</section>
+
+<!-- =====================================================================
+     6ب) خريطة المواقع الحقيقية
+     ===================================================================== -->
+<section class="section" id="real-map">
+  <div class="container">
+    <div class="section-title reveal">
+      <span class="eyebrow" data-i18n="realmap.eyebrow">جغرافيا الحضارات</span>
+      <h2 data-i18n="realmap.title">خريطة المواقع الأثرية الحقيقية</h2>
+      <p data-i18n="realmap.sub">إحداثيات فعلية تقريبية لأبرز المواقع الأثرية حول العالم — اضغط على أي نقطة للانتقال لجناحها.</p>
+    </div>
+    <div class="real-map-wrap reveal">
+      <svg viewBox="0 0 300 180" id="real-map-svg" class="real-map-svg"></svg>
+      <p class="real-map-note" data-i18n="realmap.note">إسقاط جغرافي مبسّط (Equirectangular) بإحداثيات تقريبية وليست دقيقة بالكامل.</p>
+    </div>
+
+    <div class="real-gmap-wrap reveal">
+      <h3 class="real-gmap-title">تصفّح المواقع الأثرية على الخريطة بدقّة</h3>
+      <div class="real-gmap-chips" id="real-gmap-chips"></div>
+      <div class="real-gmap-frame-wrap">
+        <iframe id="real-gmap-frame" class="real-gmap-frame" title="خريطة دقيقة للموقع الأثري المختار" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+        <a href="#" target="_blank" rel="noopener" id="real-gmap-link" class="real-gmap-link">
+          فتح في خرائط Google
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17 17 7M9 7h8v8"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =====================================================================
+     7) مقارن الحضارات
+     ===================================================================== -->
+<section class="section compare-section" id="compare">
+  <div class="container">
+    <div class="section-title reveal">
+      <span class="eyebrow" data-i18n="compare.eyebrow">قارن وتعلّم</span>
+      <h2 data-i18n="compare.title">مقارن الحضارات</h2>
+      <p data-i18n="compare.sub">اختر حضارتين وشوف الفرق بينهم في الكتابة والعمارة والعلم والمعتقدات، جنبًا إلى جنب.</p>
+    </div>
+
+    <div class="compare-picker reveal">
+      <div class="compare-select-wrap">
+        <label for="compare-select-a" data-i18n="compare.first">الحضارة الأولى</label>
+        <select id="compare-select-a" class="compare-select"></select>
+      </div>
+      <div class="compare-vs">VS</div>
+      <div class="compare-select-wrap">
+        <label for="compare-select-b" data-i18n="compare.second">الحضارة الثانية</label>
+        <select id="compare-select-b" class="compare-select"></select>
+      </div>
+    </div>
+
+    <div class="compare-table reveal" id="compare-table"></div>
+  </div>
+</section>
+
+<!-- =====================================================================
+     7ب) تحدي اليوم ولوحة الصدارة + تفعيل الإشعارات
+     ===================================================================== -->
+<section class="section" id="daily-challenge">
+  <div class="container">
+    <div class="section-title reveal">
+      <span class="eyebrow" data-i18n="daily.eyebrow">تحدي يومي</span>
+      <h2 data-i18n="daily.title">سؤال اليوم</h2>
+      <p data-i18n="daily.sub">سؤال جديد كل يوم — جاوب صح وادخل لوحة الصدارة اليومية!</p>
+    </div>
+    <div class="daily-card reveal" id="daily-challenge-content" data-i18n="common.loading">جارٍ التحميل...</div>
+    <div class="push-btn-wrap reveal">
+      <button type="button" class="btn btn-line" id="enable-push-btn">🔔 <span data-i18n="daily.push">فعّل إشعارات المتحف</span></button>
+    </div>
+  </div>
+</section>
+
+<!-- =====================================================================
+     7) دعوة ختامية
+     ===================================================================== -->
+<section class="section" style="padding-top:0;">
+  <div class="container">
+    <div class="section-title reveal" style="margin-bottom:0;">
+      <span class="eyebrow" data-i18n="closing.eyebrow">شاركنا رأيك</span>
+      <h2 data-i18n="closing.title">تعرف على حضارة نسينا ذكرها؟</h2>
+      <p style="margin-bottom:24px;" data-i18n="closing.sub">اقترح حضارة جديدة لنضيف جناحها إلى المتحف.</p>
+      <a href="https://wa.me/201142403263?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%AD%D8%A8%20%D8%A3%D9%82%D8%AA%D8%B1%D8%AD%20%D8%AD%D8%B6%D8%A7%D8%B1%D8%A9%20%D8%AC%D8%AF%D9%8A%D8%AF%D8%A9%20%D9%84%D9%85%D8%AA%D8%AD%D9%81%20%D8%A7%D9%84%D8%AD%D8%B6%D8%A7%D8%B1%D8%A7%D8%AA" target="_blank" rel="noopener" class="btn btn-gold" data-i18n="closing.btn">اقترح حضارة الآن</a>
+    </div>
+  </div>
+</section>
+
+<!-- =====================================================================
+     8ب) المصادر والمراجع (Sources & References)
+     ===================================================================== -->
+<section class="section" id="sources" style="padding-top:0;">
+  <div class="container">
+    <div class="section-title reveal">
+      <span class="eyebrow">مصداقية علمية</span>
+      <h2>المصادر والمراجع</h2>
+      <p>محتوى المتحف مبني على مصادر موثوقة، وبنراجعه بشكل مستمر لضمان دقته.</p>
+    </div>
+
+    <div class="otd-card reveal">
+      <div class="otd-icon">📚</div>
+      <div>
+        <span class="otd-date">مراجع المحتوى التاريخي والأثري</span>
+        <div class="otd-text">
+          <ul>
+            <li>المتحف المصري بالتحرير والمتحف المصري الكبير — للمقتنيات والقطع الأثرية.</li>
+            <li>قوائم اليونسكو للتراث العالمي والتراث الثقافي اللامادي (whc.unesco.org / ich.unesco.org).</li>
+            <li>وزارة السياحة والآثار المصرية.</li>
+            <li>مراجع أكاديمية عامة في تاريخ الحضارات القديمة: مصر، اليونان، روما، بلاد الرافدين، والحضارة الإسلامية.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <p class="real-map-note" style="margin-top:18px;">المحتوى معروض بغرض تعليمي وتثقيفي، ونرحّب دائمًا بأي تصويب أو إضافة من متخصصين ومؤسسات الآثار.</p>
+  </div>
+</section>
+
+<!-- =====================================================================
+     8) التذييل
+     ===================================================================== -->
+<footer>
+  <div class="container footer-grid">
+    <div>
+      <div class="footer-brand">
+        <img src="logo.png" alt="متحف إرث الحضارة" class="brand-logo">
+        <span>متحف إرث الحضارة</span>
+      </div>
+      <p data-i18n="footer.desc">متحف رقمي تفاعلي يحتفي بتراث الإنسانية، من مصر القديمة إلى أبعد حضارات العالم، بأسلوب حديث وتجربة غامرة.</p>
+    </div>
+    <div>
+      <h4 data-i18n="footer.quicklinks">روابط سريعة</h4>
+      <ul class="footer-links">
+        <li><a href="#wings" data-i18n="nav.wings">الأجنحة</a></li>
+        <li><a href="#intangible-heritage">التراث اللامادي</a></li>
+        <li><a href="#world-heritage">تراث العالم</a></li>
+        <li><a href="#sources">المصادر والمراجع</a></li>
+        <li><a href="#" data-open-modal="about-modal" data-i18n="nav.about">عن المتحف</a></li>
+        <li><a href="#" data-open-modal="privacy-modal">سياسة الخصوصية</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 data-i18n="footer.contact">تواصل معنا</h4>
+      <ul class="footer-links">
+        <li><a href="https://wa.me/201142403263?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%AD%D8%A8%20%D8%A3%D9%82%D8%AA%D8%B1%D8%AD%20%D8%AD%D8%B6%D8%A7%D8%B1%D8%A9%20%D8%AC%D8%AF%D9%8A%D8%AF%D8%A9%20%D9%84%D9%85%D8%AA%D8%AD%D9%81%20%D8%A7%D9%84%D8%AD%D8%B6%D8%A7%D8%B1%D8%A7%D8%AA" target="_blank" rel="noopener" data-i18n="nav.suggest">اقترح حضارة</a></li>
+        <li><a href="#top" data-i18n="footer.totop">العودة للأعلى</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom container" data-i18n="footer.rights">
+    جميع الحقوق محفوظة © متحف إرث الحضارة — تصميم وتطوير رقمي
+  </div>
+</footer>
+
+<!-- =====================================================================
+     9) النوافذ المنبثقة
+     ===================================================================== -->
+
+<!-- نافذة تفاصيل الجناح (تُملأ ديناميكيًا) -->
+<div class="modal-overlay" id="wing-modal">
+  <div class="modal-box">
+    <button class="modal-close">✕</button>
+    <span class="modal-tag"></span>
+    <h3></h3>
+    <p class="modal-desc"></p>
+    <ul></ul>
+    <div class="modal-fact"></div>
+    <div class="modal-btn-row">
+      <button class="btn btn-gold gallery-open-btn" id="wing-explore-btn">
+        <svg width="18" height="18" viewBox="0 0 64 64"><use href="#hg-eye"></use></svg>
+        استكشف الحضارة كاملة (100 قطعة)
+      </button>
+      <button class="btn btn-line gallery-open-btn" id="wing-leaders-btn" style="display:none;">
+        <svg width="18" height="18" viewBox="0 0 64 64"><use href="#hg-falcon"></use></svg>
+        استكشف ملوك وملكات مصر
+      </button>
+      <button class="btn btn-line gallery-open-btn" id="wing-leaders-cards-btn" style="display:none;">
+        <svg width="18" height="18" viewBox="0 0 64 64"><use href="#hg-falcon"></use></svg>
+        تصفح الحكام كبطاقات (اسحب واختر)
+      </button>
+      <button class="btn btn-line gallery-open-btn" id="wing-language-btn">
+        <svg width="18" height="18" viewBox="0 0 64 64"><use href="#hg-feather"></use></svg>
+        تعلم لغة هذه الحضارة
+      </button>
+      <button class="btn btn-line gallery-open-btn" id="wing-game-btn">
+        <svg width="18" height="18" viewBox="0 0 64 64"><use href="#hg-star"></use></svg>
+        العب واختبر معلوماتك عن الحضارة
+      </button>
+    </div>
+  </div>
 </div>
 
-<!-- تذييل الصفحة وحقوق الملكية الفكرية -->
-    <footer>
-        <p>&copy; 2026 جميع الحقوق محفوظة لـ <span class="owner-name">Eisa</span> & <span class="owner-name">Mohamed</span></p>
-    </footer>
+<!-- =====================================================================
+     معرض القطع الأثرية الكامل لكل حضارة (يُفتح عبر زر "استكشف الحضارة")
+     ===================================================================== -->
+<div class="gallery-overlay" id="gallery-view">
+  <div class="gallery-head">
+    <button class="gallery-back" id="gallery-back-btn">
+      <svg width="18" height="18" viewBox="0 0 64 64"><use href="#hg-arm"></use></svg>
+      العودة للأجنحة
+    </button>
+    <div class="gallery-head-info">
+      <span class="gallery-icon" id="gallery-icon"><svg viewBox="0 0 64 64"><use href="#hg-pyramid"></use></svg></span>
+      <div>
+        <h2 id="gallery-title">جناح مصر القديمة</h2>
+        <p id="gallery-count">100 قطعة أثرية</p>
+      </div>
+    </div>
+    <button class="gallery-back gallery-lang-btn" id="gallery-language-btn">
+      <svg width="18" height="18" viewBox="0 0 64 64"><use href="#hg-feather"></use></svg>
+      تعلم لغة الحضارة
+    </button>
+  </div>
+  <div class="container">
+    <div class="gallery-toolbar">
+      <input type="text" id="gallery-search-input" class="gallery-search-input" placeholder="دوّر جوّه هذا الجناح...">
+      <select id="gallery-sort-select" class="gallery-sort-select">
+        <option value="default">الترتيب الافتراضي</option>
+        <option value="az">أبجديًا (أ-ي)</option>
+        <option value="random">ترتيب عشوائي 🔀</option>
+      </select>
+    </div>
+    <div class="gallery-grid" id="gallery-grid"></div>
+  </div>
+</div>
 
+<!-- =====================================================================
+     لعبة "اختبر معلوماتك" التفاعلية الخاصة بكل حضارة
+     ===================================================================== -->
+<div class="gallery-overlay game-overlay" id="game-view">
+  <div class="gallery-head">
+    <button class="gallery-back" id="game-back-btn">
+      <svg width="18" height="18" viewBox="0 0 64 64"><use href="#hg-arm"></use></svg>
+      العودة للأجنحة
+    </button>
+    <div class="gallery-head-info">
+      <span class="gallery-icon" id="game-icon"><svg viewBox="0 0 64 64"><use href="#hg-star"></use></svg></span>
+      <div>
+        <h2 id="game-title">لعبة الحضارة</h2>
+        <p id="game-subtitle">اختبر معلوماتك وتعلّم أثناء اللعب</p>
+      </div>
+    </div>
+    <div class="game-hud">
+      <div class="game-lives" id="game-lives"></div>
+      <div class="game-score">النقاط: <span id="game-score">0</span></div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="game-stage" id="game-stage"></div>
+  </div>
+</div>
 
-    <!-- ربط ملف البرمجة الخارجي -->
-    <script src="script.js"></script>
+<!-- نافذة عن المتحف -->
+<div class="modal-overlay" id="about-modal">
+  <div class="modal-box">
+    <button class="modal-close">✕</button>
+    <span class="modal-tag" data-i18n="about.tag">من نحن</span>
+    <h3 data-i18n="about.title">عن متحف إرث الحضارة</h3>
+    <p data-i18n="about.p1">متحف إرث الحضارة مساحة رقمية تفاعلية صُممت لتقريب تاريخ الإنسانية لكل زائر، عبر ثمانية أجنحة تغطي أبرز الحضارات القديمة، وتجربة تعليمية ممتعة لتعلم أساسيات الكتابة الهيروغليفية.</p>
+    <p data-i18n="about.p2">هدفنا أن يكون التاريخ تجربة حيّة وليس مجرد معلومات، فكل جناح يجمع بين القصة والصورة والتفاعل.</p>
+    <div class="modal-fact" data-i18n="about.fact">نرحب دائمًا باقتراحاتكم لإثراء محتوى المتحف وإضافة حضارات جديدة.</div>
+  </div>
+</div>
+
+<!-- نافذة سياسة الخصوصية -->
+<div class="modal-overlay" id="privacy-modal">
+  <div class="modal-box">
+    <button class="modal-close">✕</button>
+    <span class="modal-tag">حماية بياناتك</span>
+    <h3>سياسة الخصوصية</h3>
+    <p>لما تسجّل دخولك في المتحف (بالإيميل وكلمة السر أو بحساب Google)، بنخزّن اسمك وبريدك الإلكتروني بس، عشان نجهزلك صفحة شخصية وسجل القطع اللي استكشفتها ونتيجة اختبار الشخصية التاريخية.</p>
+    <ul>
+      <li>إحنا لا نطلب ولا نخزّن كلمة سر بريدك الإلكتروني (جيميل) أبدًا.</li>
+      <li>بياناتك متخزّنة بأمان في Firebase ومش بنشاركها مع أي طرف تالت.</li>
+      <li>تقدر تطلب حذف حسابك وبياناتك في أي وقت عن طريق التواصل معنا.</li>
+    </ul>
+    <div class="modal-fact">لو عندك أي سؤال عن بياناتك، تقدر تتواصل معنا من رابط "تواصل معنا" في أسفل الصفحة.</div>
+  </div>
+</div>
+
+<!-- نافذة تعلم لغة الحضارة (تُملأ ديناميكيًا حسب الجناح المختار) -->
+<div class="modal-overlay" id="language-modal">
+  <div class="modal-box lang-modal-box">
+    <button class="modal-close">✕</button>
+    <span class="modal-tag" id="lang-modal-tag">تعلم لغة الحضارة</span>
+    <h3 id="lang-modal-title">أبجدية الحضارة</h3>
+    <p id="lang-modal-desc"></p>
+
+    <div class="name-writer">
+      <label for="lang-name-input">اكتب اسمك هنا (بأي لغة تفضّلها)</label>
+      <input type="text" id="lang-name-input" placeholder="مثال: أحمد أو Ahmed" maxlength="14">
+      <div class="cartouche empty" id="lang-cartouche">اكتب اسمك أعلاه لتراه بحروف هذه الحضارة</div>
+    </div>
+
+    <div class="hiero-alphabet" id="lang-alphabet"></div>
+  </div>
+</div>
+
+<!-- نافذة حدث الخط الزمني (تُملأ ديناميكيًا) -->
+<div class="modal-overlay" id="timeline-event-modal">
+  <div class="modal-box">
+    <button class="modal-close">✕</button>
+    <span class="modal-tag" id="timeline-event-tag"></span>
+    <h3 id="timeline-event-title"></h3>
+    <p id="timeline-event-desc"></p>
+  </div>
+</div>
+
+<!-- نافذة تكبير القطعة الأثرية (تُملأ ديناميكيًا عند الضغط على أي قطعة بالمعرض) -->
+<div class="modal-overlay" id="item-modal">
+  <div class="modal-box item-modal-box">
+    <button class="modal-close">✕</button>
+    <div class="item-modal-img">
+      <img id="item-modal-img" src="" alt="" title="اضغط للتكبير">
+      <button type="button" class="fav-heart item-modal-fav" id="item-modal-fav-btn" title="أضف للمفضلة" aria-label="أضف للمفضلة">
+        <svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.7-10-9.3C.3 8 2 4.5 5.6 4.5c2 0 3.6 1.1 4.4 2.6.8-1.5 2.4-2.6 4.4-2.6C18 4.5 19.7 8 22 11.7 19.5 16.3 12 21 12 21Z"/></svg>
+      </button>
+      <button type="button" class="fav-heart" id="item-modal-audio-btn" title="استمع لشرح القطعة" aria-label="استمع لشرح القطعة" style="right:auto; left:14px;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5 6 9H2v6h4l5 4V5Z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 6a9 9 0 0 1 0 12"/></svg>
+      </button>
+    </div>
+    <span class="modal-tag" id="item-modal-tag"></span>
+    <h3 id="item-modal-title"></h3>
+    <p id="item-modal-desc"></p>
+    <div class="item-rating" id="item-modal-rating">
+      <div class="item-rating-stars" id="item-modal-stars" role="radiogroup" aria-label="قيّم هذه القطعة">
+        <button type="button" class="star-btn" data-value="1" aria-label="نجمة واحدة">★</button>
+        <button type="button" class="star-btn" data-value="2" aria-label="نجمتان">★</button>
+        <button type="button" class="star-btn" data-value="3" aria-label="3 نجوم">★</button>
+        <button type="button" class="star-btn" data-value="4" aria-label="4 نجوم">★</button>
+        <button type="button" class="star-btn" data-value="5" aria-label="5 نجوم">★</button>
+      </div>
+      <span class="item-rating-summary" id="item-modal-rating-summary">جارٍ تحميل التقييمات...</span>
+    </div>
+
+    <div class="item-comments" id="item-modal-comments">
+      <button type="button" class="item-comments-toggle" id="item-comments-toggle" aria-expanded="false">
+        💬 التعليقات <span class="item-comments-count" id="item-comments-count"></span>
+        <svg class="item-comments-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+      </button>
+      <div class="item-comments-body" id="item-comments-body">
+        <form class="item-comment-form" id="item-comment-form">
+          <textarea id="item-comment-input" maxlength="400" placeholder="اكتب رأيك أو ذكرى ليك مع القطعة دي..." rows="2"></textarea>
+          <button type="submit" class="btn btn-gold">نشر</button>
+        </form>
+        <div class="item-comments-list" id="item-comments-list"></div>
+      </div>
+    </div>
+
+    <div class="modal-btn-row">
+      <button class="btn btn-line" id="item-puzzle-btn" style="margin-top:6px;">
+        <svg width="18" height="18" viewBox="0 0 64 64"><use href="#hg-hand2"></use></svg>
+        رمّم هذه القطعة كعالم آثار
+      </button>
+      <button class="btn btn-gold" id="item-modal-ar-btn" style="margin-top:6px;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3 3 8v8l9 5 9-5V8l-9-5Z"/><path d="M3 8l9 5 9-5"/><path d="M12 13v8"/></svg>
+        شاهدها بالواقع المعزز
+      </button>
+      <button class="btn btn-outline" id="item-modal-share-btn" style="margin-top:6px;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 10.5 6.8-3.9M8.6 13.5l6.8 3.9"/></svg>
+        شارك القطعة
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- نافذة الكبسولة الزمنية: رسالة للمستقبل بتتقفل لحد تاريخ معيّن -->
+<div class="modal-overlay" id="capsule-modal">
+  <div class="modal-box capsule-modal-box">
+    <button class="modal-close">✕</button>
+    <h3 class="capsule-title">📦 الكبسولة الزمنية</h3>
+    <p class="capsule-intro">اكتب رسالة أو توقّع عن المستقبل، هتتقفل لحد التاريخ اللي تحدده وبعدين هتظهرلك تاني.</p>
+    <form class="capsule-form" id="capsule-form">
+      <textarea id="capsule-message" maxlength="600" rows="4" placeholder="اكتب رسالتك للمستقبل هنا..."></textarea>
+      <div class="capsule-duration-chips">
+        <button type="button" class="capsule-chip" data-months="1">بعد شهر</button>
+        <button type="button" class="capsule-chip" data-months="6">بعد 6 شهور</button>
+        <button type="button" class="capsule-chip active" data-months="12">بعد سنة</button>
+        <button type="button" class="capsule-chip" data-custom="1">تاريخ مخصص</button>
+      </div>
+      <input type="date" id="capsule-custom-date" class="capsule-custom-date" style="display:none;">
+      <button type="submit" class="btn btn-gold">🔒 اقفل الكبسولة</button>
+    </form>
+    <div class="capsule-list" id="capsule-list"></div>
+  </div>
+</div>
+
+<!-- ===================================================================
+     نافذة الواقع المعزز (AR): تفتح كاميرا الموبايل ويظهر فوقها صورة
+     القطعة الأثرية بنفس الحجم الحقيقي التقريبي، مع إمكانية السحب
+     للتحريك والقرص (Pinch) للتكبير/التصغير.
+     =================================================================== -->
+<div class="ar-overlay" id="ar-overlay" aria-hidden="true">
+  <video id="ar-video" playsinline autoplay muted></video>
+  <div class="ar-stage" id="ar-stage">
+    <img id="ar-object" src="" alt="" draggable="false">
+  </div>
+  <div class="ar-topbar">
+    <button type="button" class="ar-icon-btn" id="ar-close-btn" aria-label="إغلاق الواقع المعزز">✕</button>
+    <span class="ar-title" id="ar-title-label"></span>
+    <button type="button" class="ar-icon-btn" id="ar-reset-btn" aria-label="إعادة ضبط الحجم والموضع">↺</button>
+  </div>
+  <div class="ar-hint" id="ar-hint">وجّه الكاميرا نحو الأرض أمامك، ثم اسحب القطعة لتحريكها واستخدم إصبعين لتكبيرها أو تصغيرها لحجمها الحقيقي تقريبًا 📐</div>
+  <div class="ar-error" id="ar-error"></div>
+</div>
+
+<!-- =====================================================================
+     بطاقات الحكام القابلة للسحب (Tinder-style)
+     ===================================================================== -->
+<div class="gallery-overlay" id="ruler-cards-view">
+  <div class="gallery-head">
+    <button class="gallery-back" id="ruler-cards-back-btn">
+      <svg width="18" height="18" viewBox="0 0 64 64"><use href="#hg-arm"></use></svg>
+      العودة للأجنحة
+    </button>
+    <div class="gallery-head-info">
+      <span class="gallery-icon"><svg viewBox="0 0 64 64"><use href="#hg-falcon"></use></svg></span>
+      <div>
+        <h2>بطاقات ملوك وملكات مصر</h2>
+        <p>اسحب يمين لو عجبك الحاكم، أو شمال للي بعده</p>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="ruler-cards-stage" id="ruler-cards-stage"></div>
+    <div class="ruler-cards-hint">اسحب البطاقة أو استخدم الزرارين</div>
+    <div class="ruler-cards-actions">
+      <button class="btn btn-outline" id="ruler-card-skip">شمال ←</button>
+      <span class="ruler-cards-progress" id="ruler-cards-progress"></span>
+      <button class="btn btn-gold" id="ruler-card-like">→ يعجبني</button>
+    </div>
+  </div>
+</div>
+
+<!-- =====================================================================
+     لعبة "رمّم القطعة" (بازل ترميم القطع الأثرية)
+     ===================================================================== -->
+<div class="gallery-overlay game-overlay" id="puzzle-view">
+  <div class="gallery-head">
+    <button class="gallery-back" id="puzzle-back-btn">
+      <svg width="18" height="18" viewBox="0 0 64 64"><use href="#hg-arm"></use></svg>
+      العودة
+    </button>
+    <div class="gallery-head-info">
+      <span class="gallery-icon"><svg viewBox="0 0 64 64"><use href="#hg-hand2"></use></svg></span>
+      <div>
+        <h2 id="puzzle-title">رمّم القطعة</h2>
+        <p>اضغط على قطعتين لتبديل مكانهما وأعد ترتيب الصورة</p>
+      </div>
+    </div>
+    <button class="gallery-back" id="puzzle-shuffle-btn">🔀 اخلط من جديد</button>
+  </div>
+  <div class="container">
+    <div class="puzzle-board" id="puzzle-board"></div>
+    <button type="button" class="btn btn-gold" id="puzzle-check-btn" style="margin:18px auto 0;display:flex;">✅ هل انتهيت من الترميم؟</button>
+    <div class="puzzle-status" id="puzzle-status"></div>
+  </div>
+</div>
+
+<!-- =====================================================================
+     نافذة تسجيل الدخول / إنشاء حساب زائر
+     ===================================================================== -->
+<div class="modal-overlay" id="login-modal">
+  <div class="modal-box login-modal-box futuristic-login">
+    <button class="modal-close">✕</button>
+
+    <div class="futuristic-login-head">
+      <div class="logo-orbit logo-orbit-lg">
+        <span class="logo-orbit-ring"></span>
+        <span class="logo-orbit-ring logo-orbit-ring2"></span>
+        <span class="logo-orbit-dot d1"></span>
+        <span class="logo-orbit-dot d2"></span>
+        <span class="logo-orbit-dot d3"></span>
+        <img src="logo.png" alt="متحف إرث الحضارة">
+      </div>
+      <h3 class="futuristic-login-title">تسجيل الدخول</h3>
+      <span class="modal-tag">أهلًا بك في المتحف</span>
+    </div>
+
+    <div class="auth-tabs">
+      <button type="button" class="auth-tab active" data-auth-tab="login">عندي حساب بالفعل</button>
+      <button type="button" class="auth-tab" data-auth-tab="register">حساب جديد</button>
+    </div>
+
+    <form id="login-form" class="auth-form active" data-auth-form="login">
+      <input type="email" id="login-email" placeholder="بريدك الإلكتروني" autocomplete="email" required>
+      <input type="password" id="login-password" placeholder="كلمة السر" autocomplete="current-password" required>
+      <div class="form-note login-error" id="login-error"></div>
+      <button type="submit" class="btn btn-gold" id="login-submit-btn" style="justify-content:center;">
+        <span class="btn-label">دخول</span>
+      </button>
+      <button type="button" class="auth-forgot" id="forgot-password-btn">نسيت كلمة السر؟</button>
+    </form>
+
+    <form id="register-form" class="auth-form" data-auth-form="register">
+      <p>سجّل بياناتك عشان نجهزلك صفحة شخصية، وسجلّ للقطع اللي بتستكشفها، واختبار شخصيتك التاريخية. هنبعتلك رابط تفعيل على بريدك للتأكد إنه بريد حقيقي.</p>
+      <input type="text" id="register-username" placeholder="اسمك" maxlength="40" autocomplete="name" required>
+      <input type="email" id="register-email" placeholder="بريدك الإلكتروني" autocomplete="email" required>
+      <input type="password" id="register-password" placeholder="اختر كلمة سر خاصة بالموقع (6 حروف على الأقل)" autocomplete="new-password" minlength="6" required>
+      <div class="form-note login-error" id="register-error"></div>
+      <button type="submit" class="btn btn-gold" id="register-submit-btn" style="justify-content:center;">
+        <span class="btn-label">إنشاء الحساب</span>
+      </button>
+    </form>
+
+    <div class="auth-divider">أو</div>
+
+    <button type="button" class="btn btn-google btn-google-lg" id="google-signin-btn" style="width:100%;justify-content:center;">
+      <svg width="20" height="20" viewBox="0 0 48 48">
+        <path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3c-1.6 4.6-6 8-11.3 8-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34.6 6.1 29.6 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.7-.4-3.5z"/>
+        <path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.6 15.9 18.9 13 24 13c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34.6 6.1 29.6 4 24 4c-7.6 0-14.1 4.3-17.4 10.7z"/>
+        <path fill="#4CAF50" d="M24 44c5.5 0 10.4-1.9 14.3-5.1l-6.6-5.6c-2 1.5-4.6 2.4-7.7 2.4-5.3 0-9.7-3.4-11.3-8.1l-6.6 5.1C9.8 39.6 16.3 44 24 44z"/>
+        <path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.2 4.1-4.1 5.4l6.6 5.6C41.8 36 44 30.5 44 24c0-1.3-.1-2.7-.4-3.5z"/>
+      </svg>
+      <span>المتابعة بحساب Google</span>
+    </button>
+
+    <div class="modal-fact" id="login-modal-fact">ملحوظة أمان: كلمة السر دي بتخص حسابك في المتحف فقط، ومنعًا لأي لبس إحنا لا نطلب ولا نخزّن كلمة سر بريدك الإلكتروني (جيميل) أبدًا. لو نسيتها استخدم "نسيت كلمة السر" أو ادخل بحساب Google.</div>
+  </div>
+</div>
+
+<!-- تنبيهات ترحيبية عائمة -->
+<div class="auth-toast" id="auth-toast"></div>
+
+<!-- =====================================================================
+     اختبار الشخصية التاريخية
+     ===================================================================== -->
+<div class="modal-overlay" id="quiz-modal">
+  <div class="modal-box quiz-modal-box">
+    <button class="modal-close">✕</button>
+    <span class="modal-tag">اختبار الشخصية التاريخية</span>
+    <h3>مين شبهك من عظماء التاريخ؟</h3>
+    <div class="game-progress-track"><div class="game-progress-fill" id="quiz-progress-fill" style="width:0%"></div></div>
+    <div class="game-qmeta"><span id="quiz-qnum">سؤال 1 من 10</span></div>
+    <div class="game-question-box">
+      <h3 id="quiz-question-text"></h3>
+      <div class="game-options" id="quiz-options"></div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="quiz-result-modal">
+  <div class="modal-box">
+    <button class="modal-close">✕</button>
+    <div class="game-results">
+      <div class="result-badge" id="quiz-result-emoji">🏺</div>
+      <h3 id="quiz-result-name"></h3>
+      <div class="result-grade" id="quiz-result-era"></div>
+      <p class="result-sub" id="quiz-result-desc"></p>
+      <div class="result-actions">
+        <button class="btn btn-line" id="quiz-result-retake-btn">أعد الاختبار</button>
+        <button class="btn btn-outline" id="quiz-result-share-btn">شارك نتيجتك 📤</button>
+        <button class="btn btn-gold" id="quiz-result-close-btn">تمام</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- =====================================================================
+     نافذة "صفحتي" (بروفايل الزائر وسجل القطع اللي شافها)
+     ===================================================================== -->
+<div class="modal-overlay" id="profile-modal">
+  <div class="modal-box profile-modal-box">
+    <button class="modal-close">✕</button>
+    <div class="profile-header">
+      <span class="profile-avatar" id="profile-avatar"></span>
+      <div class="profile-header-info">
+        <h3 id="profile-username"></h3>
+        <span class="profile-email" id="profile-email"></span>
+        <span class="profile-joined" id="profile-joined"></span>
+      </div>
+    </div>
+    <div class="profile-stats-row">
+      <div class="profile-stat"><strong id="profile-visits">0</strong><span>زيارة للموقع</span></div>
+      <div class="profile-stat"><strong id="profile-history-count">0</strong><span>قطعة شاهدتها</span></div>
+    </div>
+    <div class="profile-verify-banner" id="profile-verify-banner" style="display:none;">
+      <span>📩 بريدك لسه مش مفعّل. فعّله عشان نتأكد إن حسابك بأمان.</span>
+      <button type="button" class="btn btn-line" id="profile-resend-verify-btn">إعادة إرسال رابط التفعيل</button>
+    </div>
+    <div class="profile-personality" id="profile-personality" style="display:none;">
+      <h4 class="profile-section-title">شخصيتك التاريخية</h4>
+      <div class="personality-card">
+        <span class="personality-emoji" id="profile-personality-emoji"></span>
+        <div class="personality-info">
+          <strong id="profile-personality-name"></strong>
+          <span id="profile-personality-era"></span>
+        </div>
+        <button class="btn btn-line btn-sm" id="profile-retake-quiz-btn">أعد الاختبار</button>
+      </div>
+    </div>
+    <div class="profile-personality-empty" id="profile-personality-empty">
+      <span>لسّه ما عملتش اختبار الشخصية التاريخية!</span>
+      <button class="btn btn-gold btn-sm" id="profile-start-quiz-btn">ابدأ الاختبار 🏺</button>
+    </div>
+
+    <div class="profile-tabs">
+      <button type="button" class="profile-tab active" data-profile-tab="history">سجلّ الاستكشاف</button>
+      <button type="button" class="profile-tab" data-profile-tab="favorites">المفضلة <span id="profile-fav-count-badge"></span></button>
+      <button type="button" class="profile-tab" data-profile-tab="badges">الإنجازات <span id="profile-badges-count-badge"></span></button>
+    </div>
+    <div class="profile-history-list" id="profile-history-list" data-profile-panel="history"></div>
+    <div class="profile-history-list" id="profile-favorites-list" data-profile-panel="favorites" style="display:none;"></div>
+    <div class="profile-badges-grid" id="profile-badges-grid" data-profile-panel="badges" style="display:none;"></div>
+    <button class="btn btn-line" id="profile-logout-btn" style="width:100%;justify-content:center;margin-top:18px;">
+      تسجيل الخروج
+    </button>
+  </div>
+</div>
+
+<!-- =====================================================================
+     لوحة تحكم الأدمن (لا تظهر إلا للمدير)
+     ===================================================================== -->
+<div class="gallery-overlay admin-overlay" id="admin-view">
+  <div class="gallery-head">
+    <button class="gallery-back" id="admin-close-btn">
+      <svg width="18" height="18" viewBox="0 0 64 64"><use href="#hg-arm"></use></svg>
+      إغلاق اللوحة
+    </button>
+    <div class="gallery-head-info">
+      <span class="gallery-icon"><svg viewBox="0 0 64 64"><use href="#hg-eye"></use></svg></span>
+      <div>
+        <h2>لوحة تحكم الأدمن</h2>
+        <p>إجمالي الزوار المسجّلين: <strong id="admin-total-users">0</strong></p>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="admin-stats-row" id="admin-stats-row">
+      <div class="admin-stat-card"><strong id="admin-stat-views">0</strong><span>مشاهدة قطعة أثرية</span></div>
+      <div class="admin-stat-card"><strong id="admin-stat-favs">0</strong><span>إضافة للمفضلة</span></div>
+      <div class="admin-stat-card"><strong id="admin-stat-topwing">—</strong><span>أكثر جناح زيارة</span></div>
+    </div>
+    <input type="text" id="admin-search" class="admin-search" placeholder="ابحث باسم الزائر أو بريده الإلكتروني...">
+    <div class="admin-users-list" id="admin-users-list"></div>
+  </div>
+</div>
+
+<!-- =====================================================================
+     لوحة إمكانية الوصول
+     ===================================================================== -->
+<div class="a11y-panel" id="a11y-panel">
+  <h4>إمكانية الوصول</h4>
+  <label><input type="checkbox" id="a11y-large-text"> تكبير النص</label>
+  <label><input type="checkbox" id="a11y-contrast"> تباين ألوان أعلى</label>
+  <label><input type="checkbox" id="a11y-tts"> قراءة صوتية عند فتح أي نافذة</label>
+</div>
+
+<!-- =====================================================================
+     10) الأزرار العائمة
+     ===================================================================== -->
+<button type="button" class="fab fab-menu-toggle" id="fab-menu-toggle" aria-label="فتح قائمة الاختصارات" aria-expanded="false" title="الاختصارات">
+  <span class="fab-menu-icon"><span></span><span></span><span></span></span>
+</button>
+
+<div class="fab-group" id="fab-group-left">
+  <button class="fab theme-toggle-btn" id="theme-toggle-btn" aria-label="تبديل الوضع الفاتح/الغامق" title="الوضع الفاتح/الغامق">☀️</button>
+  <button class="fab" id="surprise-btn" aria-label="فاجئني بقطعة عشوائية" title="فاجئني">🎲</button>
+  <button class="fab" id="to-top" aria-label="العودة للأعلى">↑</button>
+</div>
+
+<div class="fab-group fab-group-right" id="fab-group-right">
+  <button class="fab" id="a11y-btn" aria-label="إمكانية الوصول" title="إمكانية الوصول">♿</button>
+  <button class="fab" id="suggestion-box-btn" data-open-modal="suggestion-modal" aria-label="صندوق الاقتراحات" title="عندك اقتراح؟">💡</button>
+  <button class="fab" id="capsule-trigger-btn" data-open-modal="capsule-modal" aria-label="الكبسولة الزمنية" title="الكبسولة الزمنية">📦</button>
+  <button class="fab" id="assistant-trigger-btn" data-open-modal="assistant-modal" aria-label="المرشد الذكي" title="اسأل المرشد الذكي">🤖</button>
+  <button class="fab" id="learning-path-trigger-btn" data-open-modal="learning-path-modal" aria-label="مسار الزيارة المقترح" title="مش عارف تبدأ منين؟">🧭</button>
+  <button class="fab" id="teacher-mode-trigger-btn" data-open-modal="teacher-modal" aria-label="وضع المعلم" title="خطط دروس للمعلمين">🎓</button>
+  <button class="fab" id="events-trigger-btn" data-open-modal="events-modal" aria-label="جدول الفعاليات" title="فعاليات المتحف">📅</button>
+</div>
+
+<!-- =====================================================================
+     صندوق الاقتراحات
+     ===================================================================== -->
+<div class="modal-overlay" id="suggestion-modal">
+  <div class="modal-box suggestion-box-modal">
+    <button class="modal-close">✕</button>
+    <h3 class="suggestion-box-title">💡 صندوق الاقتراحات</h3>
+    <p class="suggestion-box-sub">رأيك بيهمنا! اكتب أي اقتراح أو ملاحظة عن المتحف وهنقرأها.</p>
+    <div class="suggestion-login-required" id="suggestion-login-required">
+      <p>لازم تكون مسجّل دخول في المتحف الأول عشان تقدر تبعت اقتراح.</p>
+      <button type="button" class="btn btn-gold" id="suggestion-login-btn">تسجيل الدخول / إنشاء حساب</button>
+    </div>
+    <form id="suggestion-form">
+      <p class="suggestion-as">هيتم إرسال الاقتراح باسم: <strong id="suggestion-as-name"></strong></p>
+      <textarea id="suggestion-text" placeholder="اكتب اقتراحك هنا..." rows="4" maxlength="600" required></textarea>
+      <p class="suggestion-error" id="suggestion-error"></p>
+      <button type="submit" class="btn btn-gold" id="suggestion-submit-btn">إرسال الاقتراح</button>
+      <p class="suggestion-success" id="suggestion-success">تم إرسال اقتراحك، شكرًا لمساهمتك! 🙏</p>
+    </form>
+  </div>
+</div>
+
+<!-- =====================================================================
+     المرشد الذكي (Assistant Chatbot)
+     ===================================================================== -->
+<div class="modal-overlay" id="assistant-modal">
+  <div class="modal-box assistant-modal-box">
+    <button class="modal-close">✕</button>
+    <h3 class="assistant-title">🤖 المرشد الذكي</h3>
+    <p class="assistant-sub">اسألني عن أي حضارة، قطعة أثرية، أو ميزة في المتحف.</p>
+    <div class="assistant-chips" id="assistant-chips">
+      <button type="button" class="assistant-chip" data-q="احكيلي عن مصر القديمة">مصر القديمة</button>
+      <button type="button" class="assistant-chip" data-q="احكيلي عن الحضارة اليونانية">الحضارة اليونانية</button>
+      <button type="button" class="assistant-chip" data-q="ازاي ألعب مهمة إنقاذ الحضارة؟">ازاي ألعب اللعبة؟</button>
+      <button type="button" class="assistant-chip" data-q="ازاي أكسب شارات؟">الشارات والبادچ</button>
+      <button type="button" class="assistant-chip" data-q="فيه مواقع تراث في مصر؟">تراث مصر عند اليونسكو</button>
+    </div>
+    <div class="assistant-messages" id="assistant-messages"></div>
+    <form id="assistant-form" class="assistant-form">
+      <input type="text" id="assistant-input" placeholder="اكتب سؤالك هنا..." autocomplete="off">
+      <button type="submit" class="btn btn-gold">إرسال</button>
+    </form>
+  </div>
+</div>
+
+<!-- =====================================================================
+     مسار الزيارة المقترح (Learning Path)
+     ===================================================================== -->
+<div class="modal-overlay" id="learning-path-modal">
+  <div class="modal-box learning-path-modal-box">
+    <button class="modal-close">✕</button>
+    <h3>🧭 مش عارف تبدأ منين؟</h3>
+    <p>اختار اللي بيوصفك أكتر، وهنرشحلك مسار زيارة مناسب.</p>
+    <div class="path-chips" id="path-chips">
+      <button type="button" class="path-chip active" data-path="first">زائر لأول مرة</button>
+      <button type="button" class="path-chip" data-path="student">طالب / باحث</button>
+      <button type="button" class="path-chip" data-path="quick">وقتي قصير (10 دقايق)</button>
+      <button type="button" class="path-chip" data-path="games">بحب الألعاب</button>
+    </div>
+    <div class="path-steps" id="path-steps"></div>
+  </div>
+</div>
+
+<!-- =====================================================================
+     وضع المعلم (Teacher / Classroom Mode)
+     ===================================================================== -->
+<div class="modal-overlay" id="teacher-modal">
+  <div class="modal-box teacher-modal-box">
+    <button class="modal-close">✕</button>
+    <h3>🎓 وضع المعلم</h3>
+    <p>خطط دروس مختصرة وجاهزة للاستخدام في الفصل، مبنية على أجنحة المتحف.</p>
+    <div class="teacher-tabs" id="teacher-tabs">
+      <button type="button" class="teacher-tab active" data-wing="egypt">مصر القديمة</button>
+      <button type="button" class="teacher-tab" data-wing="mesopotamia">بلاد الرافدين</button>
+      <button type="button" class="teacher-tab" data-wing="greek">اليونانية</button>
+      <button type="button" class="teacher-tab" data-wing="roman">الرومانية</button>
+      <button type="button" class="teacher-tab" data-wing="islamic">الإسلامية</button>
+      <button type="button" class="teacher-tab" data-wing="world">حضارات العالم</button>
+    </div>
+    <div id="teacher-content"></div>
+    <div class="teacher-actions">
+      <button type="button" class="btn btn-gold btn-sm" id="teacher-print-btn">🖨️ اطبع خطة الدرس</button>
+    </div>
+  </div>
+</div>
+
+<!-- =====================================================================
+     جدول الفعاليات (Events Calendar)
+     ===================================================================== -->
+<div class="modal-overlay" id="events-modal">
+  <div class="modal-box events-modal-box">
+    <button class="modal-close">✕</button>
+    <h3>📅 فعاليات المتحف</h3>
+    <p>أنشطة متكررة تقدر تشارك فيها في أي وقت.</p>
+    <div class="events-list">
+      <div class="event-item">
+        <span class="event-icon">🏆</span>
+        <div class="event-body">
+          <h4>التحدي اليومي</h4>
+          <p>سؤال جديد كل يوم، وفرصة تدخل لوحة الصدارة اليومية.</p>
+          <span class="event-tag">يوميًا</span>
+        </div>
+      </div>
+      <div class="event-item">
+        <span class="event-icon">👑</span>
+        <div class="event-body">
+          <h4>بطل الأسبوع</h4>
+          <p>أفضل نتيجة في التحديات الأسبوعية بتاخد شهادة تقدير رقمية.</p>
+          <span class="event-tag">أسبوعيًا</span>
+        </div>
+      </div>
+      <div class="event-item">
+        <span class="event-icon">📦</span>
+        <div class="event-body">
+          <h4>افتح كبسولتك الزمنية</h4>
+          <p>لو كتبت كبسولة زمنية بتاريخ معيّن، ده وقت مناسب تتابعها.</p>
+          <span class="event-tag">حسب التاريخ اللي اخترته</span>
+        </div>
+      </div>
+      <div class="event-item">
+        <span class="event-icon">✨</span>
+        <div class="event-body">
+          <h4>معارض وفعاليات موسمية</h4>
+          <p>بنخطط لإضافة فعاليات مباشرة ومعارض مؤقتة قريبًا. لو عندك اقتراح لفعالية تحب تشوفها، شاركنا في صندوق الاقتراحات 💡.</p>
+          <span class="event-tag">قريبًا</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+<script src="i18n.js"></script>
+
+<!-- نظام تسجيل الدخول والبروفايل ولوحة الأدمن (Firebase) -->
+<script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-messaging-compat.js"></script>
+<script src="auth.js"></script>
+<script src="world-heritage-data.js"></script>
+<script src="features.js"></script>
+<script src="mission-game.js"></script>
+<script src="capsule.js"></script>
+<script src="assistant.js"></script>
+<script src="learning-path.js"></script>
+<script src="teacher-mode.js"></script>
+<script>
+  if ('serviceWorker' in navigator && location.protocol !== 'file:') {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('sw.js').catch(() => {});
+    });
+  }
+</script>
 </body>
 </html>
