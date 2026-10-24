@@ -1,0 +1,48 @@
+/* ===== جناح المسجد الأقصى ===== */
+.aqsa-view{display:none;animation:fadeIn .5s ease;--g:#d4af37;--em:#1f9d7a;--bg:#0d1512}
+.aqsa-view.show{display:block}
+.aq-hero{position:relative;text-align:center;padding:50px 20px 0;border-radius:18px;overflow:hidden;background:radial-gradient(ellipse at 50% 100%,#12382d,#0a1511 60%,#050806);border:1px solid rgba(212,175,55,.35)}
+.aq-hero h2{font-family:'Amiri','Cairo',serif;font-size:clamp(2rem,6vw,3.6rem);color:var(--g);text-shadow:0 0 30px rgba(212,175,55,.4)}
+.aq-hero .sub{color:#cfe9df;margin:8px 0 18px;font-size:1.05rem}
+.aq-verse{font-family:'Amiri',serif;font-size:clamp(1.1rem,3vw,1.6rem);line-height:2.1;color:#f3e4b0;max-width:820px;margin:0 auto 6px}
+.aq-verse small{display:block;color:#8fb8a8;font-size:.85rem}
+.aq-skyline{display:block;width:100%;max-width:900px;margin:10px auto 0;height:auto}
+.aq-star{animation:aqTw 3s infinite alternate}.aq-star:nth-child(2n){animation-delay:1.2s}
+@keyframes aqTw{from{opacity:.2}to{opacity:1}}
+.aq-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px;margin:28px 0}
+.aq-stat{background:#101c17;border:1px solid rgba(31,157,122,.4);border-radius:14px;padding:20px;text-align:center}
+.aq-stat b{display:block;font-size:2.2rem;color:var(--g)}.aq-stat span{color:#a9cfc2;font-size:.9rem}
+.aq-h{font-size:1.6rem;color:#fff;margin:44px 0 16px;padding-right:14px;border-right:5px solid var(--g)}
+.aq-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+.aq-card{background:#121a17;border:1px solid #2a3a34;border-radius:14px;padding:20px;transition:.3s}
+.aq-card:hover{border-color:var(--g);transform:translateY(-5px)}
+.aq-card h4{color:var(--g);margin-bottom:8px}.aq-card p{color:#b9c9c2;line-height:1.9;font-size:.95rem}
+.aq-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.aq-tab{background:transparent;border:1px solid #3b4d46;color:#cfe0d8;padding:8px 16px;border-radius:30px;cursor:pointer;font-size:.9rem}
+.aq-tab.on,.aq-tab:hover{background:var(--g);color:#1a1305;border-color:var(--g)}
+.aq-gallery{columns:3 240px;column-gap:14px;min-height:120px}
+.aq-gallery figure{break-inside:avoid;margin:0 0 14px;position:relative;border-radius:12px;overflow:hidden;cursor:zoom-in;border:1px solid #2a3a34}
+.aq-gallery img{width:100%;display:block;transition:transform .5s}.aq-gallery figure:hover img{transform:scale(1.06)}
+.aq-gallery figcaption{position:absolute;inset:auto 0 0;padding:26px 10px 8px;font-size:.78rem;color:#fff;background:linear-gradient(transparent,rgba(0,0,0,.85))}
+.aq-note{color:#8fa79d;font-size:.8rem;margin-top:8px}.aq-note a{color:var(--g)}
+.aq-lb{position:fixed;inset:0;z-index:99999;background:rgba(0,0,0,.94);display:none;flex-direction:column;align-items:center;justify-content:center;padding:16px}
+.aq-lb.show{display:flex}.aq-lb img{max-width:94vw;max-height:78vh;border-radius:8px}
+.aq-lb p{color:#ddd;margin-top:10px;text-align:center;max-width:90vw;font-size:.9rem}
+.aq-lb button{position:absolute;background:rgba(255,255,255,.12);border:0;color:#fff;font-size:2rem;width:48px;height:48px;border-radius:50%;cursor:pointer}
+.aq-lb .x{top:16px;left:16px}.aq-lb .nx{left:14px;top:50%}.aq-lb .pv{right:14px;top:50%}
+.aq-tl{position:relative;padding-right:30px;border-right:3px solid #2b4a40}
+.aq-ev{position:relative;margin-bottom:20px;background:#111b17;border:1px solid #263a33;border-radius:12px;padding:14px 18px;opacity:0;transform:translateY(20px);transition:.6s}
+.aq-ev.in{opacity:1;transform:none}
+.aq-ev:before{content:"";position:absolute;right:-39px;top:20px;width:15px;height:15px;border-radius:50%;background:var(--g);box-shadow:0 0 0 4px #0d1512}
+.aq-ev time{color:var(--g);font-weight:bold}.aq-ev h4{color:#fff;margin:2px 0 4px}.aq-ev p{color:#b3c4bc;font-size:.92rem;line-height:1.8}
+.aq-ev.eg{border-color:#c9a227;background:linear-gradient(90deg,#1c1a0d,#111b17)}.aq-ev.eg h4:after{content:" 🇪🇬"}
+.aq-eg{background:linear-gradient(135deg,#1c1808,#0e1a15);border:1px solid var(--g);border-radius:16px;padding:22px}
+.aq-eg li{margin:0 0 10px 0;color:#d6e4dd;line-height:1.9;list-style:none}.aq-eg li b{color:var(--g)}.aq-eg a{color:#7fd6b8}
+.aq-quiz{background:#101c17;border:1px solid rgba(31,157,122,.4);border-radius:16px;padding:22px}
+.aq-quiz h4{color:#fff;margin-bottom:14px}.aq-opt{display:block;width:100%;text-align:right;margin:8px 0;padding:11px 14px;background:#16241f;border:1px solid #2e453d;color:#e0eee8;border-radius:10px;cursor:pointer}
+.aq-opt:hover{border-color:var(--g)}.aq-opt.ok{background:#14532d;border-color:#22c55e}.aq-opt.no{background:#5b1a1a;border-color:#ef4444}
+@media(max-width:600px){.aq-tl{padding-right:22px}.aq-ev:before{right:-31px}}
+body.a11y-no-motion .aq-ev{opacity:1;transform:none;transition:none}
+.wings-grid .wing-card[data-wing="aqsa"]{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;border-color:#1f9d7a}
+.wings-grid .wing-card[data-wing="aqsa"] .wing-card-img{height:100%;min-height:220px;background:linear-gradient(135deg,#0d3b2e,#d4af37)}
+@media(max-width:700px){.wings-grid .wing-card[data-wing="aqsa"]{grid-template-columns:1fr}}

@@ -1,0 +1,85 @@
+/* =====================================================
+   theme.css — تصميم بسيط وشيك
+   الفكرة: كل الألوان والأحجام في متغيرات فوق،
+   غيّر قيمة واحدة هنا وكل الموقع يتغير.
+   ===================================================== */
+:root {
+    --gold: #d4af37;      /* لون التمييز (الذهبي) */
+    --bg: #0f0f12;        /* خلفية الصفحة */
+    --card: #17171c;      /* خلفية الكروت */
+    --line: #2a2a32;      /* لون الحدود */
+    --text: #ececf0;      /* لون الكلام */
+    --muted: #9a9aa6;     /* كلام ثانوي */
+    --radius: 16px;       /* استدارة الأركان */
+}
+
+/* 1) الصفحة كلها */
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Cairo', 'Segoe UI', Tahoma, sans-serif;
+    line-height: 1.7;
+}
+* { font-family: inherit; }
+
+/* 2) رأس الصفحة: خلفية هادية بدل الصورة */
+header {
+    background: radial-gradient(circle at 50% 0%, #2a2210, var(--bg) 70%);
+    border-bottom: 1px solid var(--gold);
+}
+header h1 { color: var(--gold); letter-spacing: 1px; }
+header p  { color: var(--muted); }
+
+/* 3) الكروت (الأجنحة + المعروضات): نفس الشكل */
+.wing-card, .art-card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    overflow: hidden;
+    transition: transform .3s, border-color .3s;
+}
+.wing-card:hover, .art-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--gold);
+    box-shadow: 0 12px 28px rgba(0,0,0,.4);
+}
+.wing-card-body h3, .art-info h3 { color: var(--gold); }
+.wing-card-body p,  .art-info p  { color: var(--muted); }
+
+/* 4) العناوين: خط ذهبي صغير بدل الشريط الكبير */
+.section-title {
+    background: none;
+    color: var(--text);
+    border: 0;
+    border-right: 4px solid var(--gold);
+    padding: 4px 14px;
+    border-radius: 0;
+}
+
+/* 5) الأزرار: شكل واحد لكل الأزرار */
+.wings-start-btn, .dyl-btn, .send-whatsapp-btn {
+    background: var(--gold);
+    color: #1a1305;
+    border: 0;
+    border-radius: 999px;
+    font-weight: 700;
+}
+.wing-back-btn, .wing-open-btn {
+    border-color: var(--gold);
+    color: var(--gold);
+    border-radius: 999px;
+}
+
+/* 6) النوافذ المنبثقة */
+.modal-content {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+}
+
+/* 7) التذييل */
+footer {
+    background: transparent;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+}
